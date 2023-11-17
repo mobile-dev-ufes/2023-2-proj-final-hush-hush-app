@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.a2023_2_proj_final_hush_hush_app"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.a2023_2_proj_final_hush_hush_app"

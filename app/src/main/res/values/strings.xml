@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">2023-2-proj-final-hush-hush-app</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>
