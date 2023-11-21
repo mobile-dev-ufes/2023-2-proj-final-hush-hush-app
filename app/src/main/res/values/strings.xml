@@ -2,4 +2,10 @@
     <string name="app_name">2023-2-proj-final-hush-hush-app</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="welcome_text">Welcome to our app!
+
+Here, you can share completely anonymously, express your secrets that weigh you down. This is a space where you can tell jokes, blurt out thoughts and be completely free.
+
+</string>
+
 </resources>
