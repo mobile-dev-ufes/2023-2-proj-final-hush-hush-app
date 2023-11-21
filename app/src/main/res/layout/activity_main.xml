@@ -8,32 +8,46 @@
     android:background="@color/black"
     >
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/title"
-        android:text="Hush Hush!"
-        android:textSize="24sp"
+        android:text="Hush Hush"
+        android:textSize="50dp"
         android:textStyle="bold"
         android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="#FFFFFF"
-        android:fontFamily="sans-serif-condensed" />
+        android:fontFamily="@font/gloriahallelujahregular"
+         />
 
     <TextView
+        android:id="@+id/text_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lorem ipsum dolor sit amet. Eos illum maxime est similique sapiente 33 voluptatem quasi! Ut consequuntur velit est Lorem ipsum dolor sit amet. Eos illum maxime est similique sapiente 33 voluptatem quasi! Ut "
+        android:text="@string/welcome_text"
         android:textSize="20sp"
         android:textStyle="bold"
         android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/gloriahallelujahregular"
+        />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_welcome"
+        android:layout_marginTop="45dp"
+        android:paddingStart="120dp"
+        android:src="@drawable/google_chrome_modo_anonimo" />
+
 
     <Button
         android:id="@+id/button_register"
