@@ -11,6 +11,8 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -18,37 +20,75 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface UserService {
+    @Headers("Accept: application/json")
     @POST("login-user")
     fun login(@Body credentials: LoginBody): Call<StoreLoginResponse>
 
+    @Headers("Accept: application/json")
     @POST("user")
     fun store(@Body data: StoreBody): Call<StoreLoginResponse>
 
+    @Headers("Accept: application/json")
     @PUT("user")
-    fun update(@Body data: UpdateBody): Call<UpdateResponse>
+    fun update(
+        @Header("Authorization") token: String,
+        @Header("Accept-Language") language: String,
+        @Body data: UpdateBody
+    ): Call<UpdateResponse>
 
+    @Headers("Accept: application/json")
     @POST("user-profile-picture")
-    fun updateProfilePicture(@Body data: UpdatePasswordBody): Call<UpdateResponse>
+    fun updateProfilePicture(
+        @Header("Authorization") token: String,
+        @Header("Accept-Language") language: String,
+        @Body data: UpdatePasswordBody
+    ): Call<UpdateResponse>
 
+    @Headers("Accept: application/json")
     @PATCH("user-password")
-    fun updatePassword(@Body data: UpdatePasswordBody): Call<UpdateResponse>
+    fun updatePassword(
+        @Header("Authorization") token: String,
+        @Header("Accept-Language") language: String,
+        @Body data: UpdatePasswordBody
+    ): Call<UpdateResponse>
 
+    @Headers("Accept: application/json")
     @POST("logout-user")
-    fun logout(): Call<Void>
+    fun logout(
+        @Header("Authorization") token: String,
+        @Header("Accept-Language") language: String,
+    ): Call<Void>
 
+    @Headers("Accept: application/json")
     @GET("users")
     fun index(
+        @Header("Authorization") token: String,
+        @Header("Accept-Language") language: String,
         @Query("name") name: String? = null,
         @Query("count") count: Int? = null,
         @Query("page") page: Int? = null
     ): Call<IndexResponse>
 
+    @Headers("Accept: application/json")
     @GET("user/{userId}")
-    fun show(@Path("userId") userId: Int): Call<ShowResponse>
+    fun show(
+        @Header("Authorization") token: String,
+        @Header("Accept-Language") language: String,
+        @Path("userId") userId: Int
+    ): Call<ShowResponse>
 
+    @Headers("Accept: application/json")
     @GET("user")
-    fun showByLoggedUser(): Call<ShowResponse>
+    fun showByLoggedUser(
+        @Header("Authorization") token: String,
+        @Header("Accept-Language") language: String,
+    ): Call<ShowResponse>
 
+    @Headers("Accept: application/json")
     @DELETE("user/{userId}")
-    fun delete(@Path("userId") userId: Int): Call<Void>
+    fun delete(
+        @Header("Authorization") token: String,
+        @Header("Accept-Language") language: String,
+        @Path("userId") userId: Int
+    ): Call<Void>
 }
