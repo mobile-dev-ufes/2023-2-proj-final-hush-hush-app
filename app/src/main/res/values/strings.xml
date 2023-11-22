@@ -1,19 +1,23 @@
 <resources>
     <string name="app_name">2023-2-proj-final-hush-hush-app</string>
+    <string name="hush_hush">Hush Hush</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="sign_up">Sign up</string>
-    <string name="welcome_text">Welcome to our app!
-
-Here, you can share completely anonymously, express your secrets that weigh you down. This is a space where you can tell jokes, blurt out thoughts and be completely free.
-
-    </string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_pass">Enter password</string>
+    <string name="confirm_pass">Confirm password</string>
+    <string name="not_have_account">"Don't have an account?"</string>
+    <string name="next">Next</string>
+    <string name="already_have_user">Already have an user?</string>
+    <string name="welcome_text">Welcome to our app! Here, you can share completely anonymously, express your secrets that weigh you down. This is a space where you can tell jokes, blurt out thoughts and be completely free.</string>
     <string name="title_terms_of_use">Terms of use</string>
-    <string name="text_terms_of_use">Acceptance of Terms:
-    By accessing or using our app, you agree to these Terms of Use and our Privacy Policy.
-
-    User Account: By creating an account on our app, you are responsible for maintaining the confidentiality of your login information and for all activities that occur under your account.
-
-    Changes to the Terms: We may update or modify these Terms of Use occasionally. We will notify you of any significant changes and the date of the last update. Your continued use of the app after the changes indicates your acceptance of these changes.</string>
+    <string name="acceptance_of_terms">Acceptance of Terms:</string>
+    <string name="acceptance_of_terms_body">By accessing or using our app, you agree to these Terms of Use and our Privacy Policy.</string>
+    <string name="user_account">User Account:</string>
+    <string name="user_account_body">By creating an account on our app, you are responsible for maintaining the confidentiality of your login information and for all activities that occur under your account.</string>
+    <string name="change_terms">Changes to the Terms:</string>
+    <string name="change_terms_body">We may update or modify these Terms of Use occasionally. We will notify you of any significant changes and the date of the last update. Your continued use of the app after the changes indicates your acceptance of these changes.</string>
     <string name="agreed_to_terms">I have read and agreed to the terms and conditions </string>
+
 </resources>
