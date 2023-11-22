@@ -8,7 +8,7 @@ class RetrofitClient {
     companion object {
         private lateinit var INSTANCE: Retrofit
         private const val API_PORT = 8000
-        private const val BASE_URL = "http://localhost:${API_PORT}/"
+        private const val BASE_URL = "http://localhost:${API_PORT}/api/"
 
         private fun getClientInstance(): Retrofit {
             val http = OkHttpClient.Builder()
