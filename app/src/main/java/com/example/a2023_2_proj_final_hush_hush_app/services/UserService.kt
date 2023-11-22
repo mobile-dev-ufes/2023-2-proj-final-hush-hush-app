@@ -3,7 +3,7 @@ import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.LoginBody
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.StoreBody
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.UpdateBody
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.UpdatePasswordBody
-import com.example.a2023_2_proj_final_hush_hush_app.responses.user.AuthResponse
+import com.example.a2023_2_proj_final_hush_hush_app.responses.user.StoreLoginResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.user.IndexResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.user.ShowResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.user.UpdateResponse
@@ -19,10 +19,10 @@ import retrofit2.http.Query
 
 interface UserService {
     @POST("login-user")
-    fun login(@Body credentials: LoginBody): Call<AuthResponse>
+    fun login(@Body credentials: LoginBody): Call<StoreLoginResponse>
 
     @POST("user")
-    fun store(@Body data: StoreBody): Call<AuthResponse>
+    fun store(@Body data: StoreBody): Call<StoreLoginResponse>
 
     @PUT("user")
     fun update(@Body data: UpdateBody): Call<UpdateResponse>
@@ -37,7 +37,11 @@ interface UserService {
     fun logout(): Call<Void>
 
     @GET("users")
-    fun index(@Query("name") name: String, @Query("count") count: Int, @Query("page") page: Int): Call<IndexResponse>
+    fun index(
+        @Query("name") name: String? = null,
+        @Query("count") count: Int? = null,
+        @Query("page") page: Int? = null
+    ): Call<IndexResponse>
 
     @GET("user/{userId}")
     fun show(@Path("userId") userId: Int): Call<ShowResponse>
