@@ -19,5 +19,6 @@
     <string name="change_terms">Changes to the Terms:</string>
     <string name="change_terms_body">We may update or modify these Terms of Use occasionally. We will notify you of any significant changes and the date of the last update. Your continued use of the app after the changes indicates your acceptance of these changes.</string>
     <string name="agreed_to_terms">I have read and agreed to the terms and conditions </string>
+    <string name="new_hush_hush">New hush-hush</string>
 
 </resources>
