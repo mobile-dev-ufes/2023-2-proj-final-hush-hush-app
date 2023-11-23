@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">2023-2-proj-final-hush-hush-app</string>
+    <string name="hush_hush">Hush Hush</string>
+    <string name="login">Login</string>
+    <string name="register">Cadastro</string>
+    <string name="sign_up">Sign up</string>
+    <string name="enter_username">Username</string>
+    <string name="enter_pass">Senha</string>
+    <string name="confirm_pass">Confirmar senha</string>
+    <string name="not_have_account">"Não possui conta?</string>
+    <string name="next">Próximo</string>
+    <string name="already_have_user">Já é cadastrado?</string>
+    <string name="welcome_text">Bem-vindo ao nosso app! Aqui você pode se expressar de forma totalmente anônima e desabafar segredos que o afligem. Este é um espaço onde você pode contar piadas, compartilhar ideias e ser totalmente livre.</string>
+    <string name="title_terms_of_use">Termos de uso</string>
+    <string name="acceptance_of_terms">Aceitação dos Termos:</string>
+    <string name="acceptance_of_terms_body">Ao acessar ou utilizar nosso aplicativo, você concorda com estes Termos de Uso e nossa Política de Privacidade.</string>
+    <string name="user_account">Conta de usuário:</string>
+    <string name="user_account_body">Ao criar uma conta em nosso aplicativo, você é responsável por manter a confidencialidade de suas informações de login e por todas as atividades que ocorrem em sua conta.</string>
+    <string name="change_terms">Alterações nos Termos:</string>
+    <string name="change_terms_body">Poderemos atualizar ou modificar estes Termos de Uso ocasionalmente. Iremos notificá-lo sobre quaisquer alterações significativas e a data da última atualização. O uso continuado do aplicativo após as alterações indica sua aceitação dessas alterações.</string>
+    <string name="agreed_to_terms">Li e concordo com os termos e condições. </string>
+
+
+</resources>
