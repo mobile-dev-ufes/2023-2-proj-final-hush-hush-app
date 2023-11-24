@@ -3,4 +3,13 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
+
+<!--    <selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--        <item android:color="@color/light_blue_A200" android:state_checked="true"/>-->
+<!--        <item android:color="@color/black"/>-->
+<!--    </selector>-->
+
+
+
+
 </resources>

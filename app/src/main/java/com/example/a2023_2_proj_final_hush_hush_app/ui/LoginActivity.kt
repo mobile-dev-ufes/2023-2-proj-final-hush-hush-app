@@ -10,6 +10,7 @@ import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityLoginBin
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityMainBinding
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityRegisterBinding
 import com.example.a2023_2_proj_final_hush_hush_app.ui.HomeActivity
+import com.example.a2023_2_proj_final_hush_hush_app.ui.MenuActivity
 
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -28,7 +29,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.id == R.id.button_login) {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
         } else if (view.id == R.id.button_signUp) {
             val intent = Intent(this, RegisterActivity::class.java)
