@@ -69,7 +69,7 @@
 
 
     <Button
-        android:id="@+id/button_next"
+        android:id="@+id/button_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/login"
@@ -95,7 +95,7 @@
 
 
     <Button
-        android:id="@+id/button_singUp"
+        android:id="@+id/button_signUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

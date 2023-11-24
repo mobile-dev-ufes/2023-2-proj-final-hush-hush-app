@@ -16,7 +16,5 @@
         android:name="com.example.a2023_2_proj_final_hush_hush_app.Register"
         android:label="Register"
         tools:layout="@layout/register"/>
-    <action
-        android:id="@+id/action_mainActivity_to_register"
-        app:destination="@id/register" />
+
 </navigation>
