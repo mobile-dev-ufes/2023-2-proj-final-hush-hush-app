@@ -37,8 +37,11 @@ class TestActivity : AppCompatActivity() {
                 val res = response.message()
 
                 Toast.makeText(applicationContext,
-                    "Your Message", Toast.LENGTH_LONG).show();
-            }
+                    res, Toast.LENGTH_LONG).show();
+                 }
+//                Toast.makeText(applicationContext,
+//                    "Your Message", Toast.LENGTH_LONG).show();
+//                }
 
             override fun onFailure(call: Call<StoreLoginResponse>, t: Throwable) {
                 Toast.makeText(applicationContext,
