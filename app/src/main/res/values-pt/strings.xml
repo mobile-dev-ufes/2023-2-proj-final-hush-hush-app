@@ -11,6 +11,8 @@
     <string name="confirm_pass">Confirmar senha</string>
     <string name="not_have_account">"Não possui conta?</string>
     <string name="next">Próximo</string>
+    <string name="title">Título</string>
+    <string name="create">Criar Hush Hush</string>
     <string name="already_have_user">Já é cadastrado?</string>
     <string name="welcome_text">Bem-vindo ao nosso app! Aqui você pode se expressar de forma totalmente anônima e desabafar segredos que o afligem. Este é um espaço onde você pode contar piadas, compartilhar ideias e ser totalmente livre.</string>
     <string name="title_terms_of_use">Termos de uso</string>
@@ -22,5 +24,7 @@
     <string name="change_terms_body">Poderemos atualizar ou modificar estes Termos de Uso ocasionalmente. Iremos notificá-lo sobre quaisquer alterações significativas e a data da última atualização. O uso continuado do aplicativo após as alterações indica sua aceitação dessas alterações.</string>
     <string name="agreed_to_terms">Li e concordo com os termos e condições. </string>
     <string name="new_hush_hush">Nova hush-hush</string>
+    <string name="type_hush_hush">Digite o seu hush hush...</string>
+
 
 </resources>
