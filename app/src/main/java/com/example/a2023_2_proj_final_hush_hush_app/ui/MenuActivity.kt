@@ -7,7 +7,6 @@ import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityMenuBind
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityRegisterBinding
 
 class MenuActivity : AppCompatActivity(), View.OnClickListener {
-
     private lateinit var binding: ActivityMenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +15,6 @@ class MenuActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 //        binding.buttonLogin.setOnClickListener(this)
 //        binding.buttonNext.setOnClickListener(this)
-
     }
 
     override fun onClick(v: View?) {

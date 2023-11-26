@@ -1,6 +1,6 @@
-package com.example.a2023_2_proj_final_hush_hush_app
+package com.example.a2023_2_proj_final_hush_hush_app.ui
 
-
+import com.example.a2023_2_proj_final_hush_hush_app.R
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

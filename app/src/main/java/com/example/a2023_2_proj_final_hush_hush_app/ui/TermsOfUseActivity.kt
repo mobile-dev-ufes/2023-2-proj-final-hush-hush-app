@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a2023_2_proj_final_hush_hush_app.HomeFragment
 import com.example.a2023_2_proj_final_hush_hush_app.R
-import com.example.a2023_2_proj_final_hush_hush_app.RegisterActivity
+import com.example.a2023_2_proj_final_hush_hush_app.ui.RegisterActivity
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.LoginBody
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.StoreBody
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
@@ -29,9 +29,6 @@ class TermsOfUseActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityTermsOfUseBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.buttonSignUp.setOnClickListener(this)
-
-
-
     }
 
     override fun onClick(view: View) {

@@ -1,5 +1,6 @@
-package com.example.a2023_2_proj_final_hush_hush_app
+package com.example.a2023_2_proj_final_hush_hush_app.ui
 
+import com.example.a2023_2_proj_final_hush_hush_app.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -32,10 +33,7 @@ class MainActivity : AppCompatActivity() ,  View.OnClickListener {
         setContentView(binding.root)
         binding.buttonRegister.setOnClickListener(this)
         binding.buttonLogin.setOnClickListener(this)
-
     }
-
-
 
     override fun onClick(view: View) {
         if (view.id == R.id.button_register) {
