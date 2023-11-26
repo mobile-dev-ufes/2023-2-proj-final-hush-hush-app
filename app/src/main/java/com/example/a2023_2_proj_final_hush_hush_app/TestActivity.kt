@@ -26,6 +26,8 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
+
+
         val body = LoginBody()
         body.username = "testSeeder"
         body.password = "password"
