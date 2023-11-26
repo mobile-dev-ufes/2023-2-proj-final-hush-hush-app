@@ -26,7 +26,10 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
-
+        //            val text = "O botão foi clicadooooooooooo!"
+        //            val duration = Toast.LENGTH_SHORT
+        //            val toast = Toast.makeText(applicationContext, text, duration)
+        //            toast.show()
 
         val body = LoginBody()
         body.username = "testSeeder"

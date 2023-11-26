@@ -75,9 +75,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 //            toast.show()
             editText  =  findViewById(R.id.editTextPassword)
             val textPassword: String = editText.text.toString()
-//            toast = Toast.makeText(applicationContext, textPassword, duration)
-//            toast.show()
-
 
             val body = LoginBody()
             body.username = textUsername
@@ -106,8 +103,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             })
 
 
-//            val intent = Intent(this, MenuActivity::class.java)
-//            startActivity(intent)
+
 
 
         } else if (view.id == R.id.button_signUp) {
