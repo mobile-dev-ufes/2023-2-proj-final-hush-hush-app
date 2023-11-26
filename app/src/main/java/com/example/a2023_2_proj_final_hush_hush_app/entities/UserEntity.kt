@@ -15,5 +15,5 @@ open class UserEntity {
     var updatedAt: String = ""
 
     @SerializedName("profile_picture")
-    var profilePicture: String = ""
+    var profilePicture: String? = ""
 }

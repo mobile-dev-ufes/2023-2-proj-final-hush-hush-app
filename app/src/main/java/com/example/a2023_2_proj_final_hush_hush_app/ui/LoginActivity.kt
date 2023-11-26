@@ -79,7 +79,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun handleClickLoginButton() {
-        loginVM.setIsLoading(true)
+//        loginVM.setIsLoading(true)
 
         val body = LoginBody()
         body.username = loginVM.username().value.toString()
@@ -93,15 +93,18 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     // Saving user data
                     sp.setUsername(response.body()!!.username)
                     sp.setProfilePicture(response.body()!!.profilePicture)
-                    sp.setUsername("${response.body()!!.token.tokenType} ${response.body()!!.token.accessToken}")
+                    sp.setToken("${response.body()!!.token.tokenType} ${response.body()!!.token.accessToken}")
                     loginVM.setIsLoading(false)
-                    changeActivity(HomeActivity::class.java)
+                    changeActivity(MenuActivity::class.java)
+                }else{
+//                    loginVM.setIsLoading(false)
+                    showToast("Wrong username or password.")
                 }
             }
 
             override fun onFailure(call: Call<StoreLoginResponse>, t: Throwable) {
                 loginVM.setIsLoading(false)
-                showToast("Wrong username or password.")
+                showToast("Internal Server Error!")
             }
         })
     }

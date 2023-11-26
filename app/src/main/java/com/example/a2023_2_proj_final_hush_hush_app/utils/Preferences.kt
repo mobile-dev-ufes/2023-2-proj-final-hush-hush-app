@@ -27,8 +27,8 @@ class Preferences(context: Context) {
         sp.getString(this.usernameKey, "") ?: ""
     }
 
-    fun setProfilePicture(profilePicture: String) {
-        sp.edit().putString(this.profilePictureKey, profilePicture).apply()
+    fun setProfilePicture(profilePicture: String?) {
+        sp.edit().putString(this.profilePictureKey, profilePicture?:"").apply()
     }
 
     fun getProfilePicture() {
