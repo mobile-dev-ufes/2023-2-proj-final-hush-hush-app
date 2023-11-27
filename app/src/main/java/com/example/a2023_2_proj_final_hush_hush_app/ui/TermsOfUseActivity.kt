@@ -28,35 +28,40 @@ class TermsOfUseActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         sp = Preferences(applicationContext)
         termsOfUseVM = ViewModelProvider(this)[TermsOfUseViewModel::class.java]
+        termsOfUseVM.setIsAccepted(false)
 
         binding = ActivityTermsOfUseBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.buttonSignUp.setOnClickListener(this)
         binding.checkbox.setOnCheckedChangeListener {
                 _, isChecked ->
-
             if(isChecked) {
                 termsOfUseVM.setIsAccepted(true)
             } else {
                 termsOfUseVM.setIsAccepted(false)
             }
         }
+        this.setObserver()
     }
 
     override fun onClick(view: View) {
         if(view.id == R.id.button_signUp){
-            this.handleClickNextButton()
+            this.handleClickSignUpButton()
         }
     }
 
-    private fun handleClickNextButton() {
+    private fun handleClickSignUpButton() {
+        if(termsOfUseVM.isAccepted().value == false){
+            this.showToast("You need to accept the terms to create an account")
+            return
+        }
         termsOfUseVM.setUsername(intent.getStringExtra("textUsername"))
         termsOfUseVM.setPassword(intent.getStringExtra("textPassword"))
         termsOfUseVM.setRepeatPassword(intent.getStringExtra("textConfirmPassword"))
 
-//            val checkbox: CheckBox = findViewById(R.id.checkbox)
-
-//            if(checkbox.isChecked){
+//        val checkbox: CheckBox = findViewById(R.id.checkbox)
+//
+//        if(checkbox.isChecked){
 
         termsOfUseVM.setIsLoading(true)
 
@@ -78,7 +83,7 @@ class TermsOfUseActivity : AppCompatActivity(), View.OnClickListener {
 
                     changeActivity(MenuActivity::class.java)
                 } else {
-                    showToast("Wrong username or password.")
+                    showToast("Invalid username or password.")
                 }
 
                 termsOfUseVM.setIsLoading(false)
@@ -89,13 +94,13 @@ class TermsOfUseActivity : AppCompatActivity(), View.OnClickListener {
                 showToast("Internal Server Error!")
             }
         })
-//            }
-//            else{
-//                val text = "You have to accept the terms of use to prossegue!"
-//                val duration = Toast.LENGTH_SHORT
-//                val toast = Toast.makeText(applicationContext, text, duration)
-//                toast.show()
-//            }
+    //            }
+    //            else{
+    //                val text = "You have to accept the terms of use to prossegue!"
+    //                val duration = Toast.LENGTH_SHORT
+    //                val toast = Toast.makeText(applicationContext, text, duration)
+    //                toast.show()
+    //            }
     }
 
     private fun setObserver() {
