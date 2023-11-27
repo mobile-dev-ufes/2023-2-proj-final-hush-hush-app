@@ -15,23 +15,23 @@ class Preferences(context: Context) {
         sp.edit().putString(this.tokenKey, token).apply()
     }
 
-    fun getToken() {
-        sp.getString(this.tokenKey, "") ?: ""
+    fun getToken() : String{
+        return sp.getString(this.tokenKey, "") ?: ""
     }
 
     fun setUsername(username: String) {
         sp.edit().putString(this.usernameKey, username).apply()
     }
 
-    fun getUsername() {
-        sp.getString(this.usernameKey, "") ?: ""
+    fun getUsername() : String {
+        return sp.getString(this.usernameKey, "") ?: ""
     }
 
     fun setProfilePicture(profilePicture: String?) {
         sp.edit().putString(this.profilePictureKey, profilePicture?:"").apply()
     }
 
-    fun getProfilePicture() {
-        sp.getString(this.profilePictureKey, "") ?: ""
+    fun getProfilePicture() : String {
+        return sp.getString(this.profilePictureKey, "") ?: ""
     }
 }
