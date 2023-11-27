@@ -79,7 +79,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun handleClickLoginButton() {
-//        loginVM.setIsLoading(true)
+        loginVM.setIsLoading(true)
 
         val body = LoginBody()
         body.username = loginVM.username().value.toString()
@@ -94,12 +94,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     sp.setUsername(response.body()!!.username)
                     sp.setProfilePicture(response.body()!!.profilePicture)
                     sp.setToken("${response.body()!!.token.tokenType} ${response.body()!!.token.accessToken}")
-                    loginVM.setIsLoading(false)
+
                     changeActivity(MenuActivity::class.java)
                 }else{
-//                    loginVM.setIsLoading(false)
                     showToast("Wrong username or password.")
                 }
+
+                loginVM.setIsLoading(false)
             }
 
             override fun onFailure(call: Call<StoreLoginResponse>, t: Throwable) {
