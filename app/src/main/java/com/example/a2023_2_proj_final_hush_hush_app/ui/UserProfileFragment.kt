@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2023_2_proj_final_hush_hush_app.R
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityTermsOfUseBinding
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentUserProfileBinding
+import com.example.a2023_2_proj_final_hush_hush_app.ui.view.ListHushHushAdapter
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.UserProfileViewModel
 
 class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
@@ -20,6 +21,7 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
 //    }
 
     private lateinit var viewModel: UserProfileViewModel
+    private val adapter = ListHushHushAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +30,8 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         binding.recyclerListHushHush.layoutManager = LinearLayoutManager(this.context) // pode dar erro
+        binding.recyclerListHushHush.adapter = adapter
+
         return binding.root
     }
 
