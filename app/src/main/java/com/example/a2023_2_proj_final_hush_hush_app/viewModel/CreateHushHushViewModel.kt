@@ -2,8 +2,9 @@ package com.example.a2023_2_proj_final_hush_hush_app.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-class CreateHushHushViewModel {
+class CreateHushHushViewModel : ViewModel() {
     private var title = MutableLiveData<String>()       //title_hush_hush
     private var content = MutableLiveData<String>()     //body_hush_hush
     private var isLoading = MutableLiveData<Boolean>()

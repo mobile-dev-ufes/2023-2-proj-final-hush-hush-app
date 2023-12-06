@@ -8,7 +8,7 @@ import com.example.a2023_2_proj_final_hush_hush_app.responses.post.ShowResponse
 import com.example.a2023_2_proj_final_hush_hush_app.ui.viewHolder.ListHushHushViewHolder
 
 class ListHushHushAdapter :  RecyclerView.Adapter<ListHushHushViewHolder>() {
-    private var hushHushList: List<ShowResponse> = listOf()
+    private var hushHushList: Array<ShowResponse> = arrayOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListHushHushViewHolder {
         val item = CardHushHushBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,7 +23,7 @@ class ListHushHushAdapter :  RecyclerView.Adapter<ListHushHushViewHolder>() {
         holder.bindVH(hushHushList[position])
     }
 
-    fun updateHushHushList(list: List<ShowResponse>) {
+    fun updateHushHushList(list: Array<ShowResponse>) {
         hushHushList = list
         notifyDataSetChanged()
     }

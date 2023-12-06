@@ -6,6 +6,6 @@ import com.google.gson.annotations.SerializedName
 class StoreLoginResponse() : UserEntity() {
     // Login and Store responses
 
-    @SerializedName("access_token")
+    @SerializedName("token")
     var token: TokenEntity = TokenEntity()
 }

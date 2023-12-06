@@ -26,9 +26,11 @@ import retrofit2.Response
 import java.util.Locale
 
 
-class CreateHushHushFragment : Fragment() {
+class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  View.OnClickListener {
     private var postService = RetrofitClient.createService(PostService::class.java)
-    private lateinit var binding: FragmentCreateHushHushBinding
+    private var _binding: FragmentCreateHushHushBinding? = null
+
+    private val binding get() = _binding!!
 
 
     private lateinit var createHushHushVM: CreateHushHushViewModel
@@ -38,23 +40,29 @@ class CreateHushHushFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentCreateHushHushBinding.inflate(layoutInflater)
-        val fragView = inflater.inflate(R.layout.fragment_create_hush_hush, container, false)
-//        val intentFromActivity = requireActivity()
-        binding.buttonCreate.setOnClickListener{
+//        val fragView = inflater.inflate(R.layout.fragment_create_hush_hush, container, false)
+        _binding = FragmentCreateHushHushBinding.inflate(inflater , container, false)
 
-            this.onClick(it)}
-        return fragView
+
+//        binding.buttonCreate.setOnClickListener{
+//            showToast("entrei no toast")
+//
+//            this.onClick(it)}
+        binding.buttonCreate.setOnClickListener(this)
+//        this.setObserver()
+        return binding.root
 
     }
 
-    private fun onClick(view: View) {
+    override fun onClick(view: View) {
+        showToast("entrei no on Clickkkkkkkkk")
         if(view.id == R.id.button_create){
             this.handleClickSignUpButton()
         }
     }
 
     private fun handleClickSignUpButton() {
+        showToast("entrei na funcao")
 
         createHushHushVM.setIsLoading(true)
 
@@ -107,10 +115,16 @@ class CreateHushHushFragment : Fragment() {
 
 
     private fun setObserver() {
-        createHushHushVM.isLoading().observe(this) {
+        createHushHushVM.isLoading().observe(viewLifecycleOwner) {
             binding.buttonCreate.isEnabled = !it
 //            binding.buttonLogin.isEnabled = !it
         }
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

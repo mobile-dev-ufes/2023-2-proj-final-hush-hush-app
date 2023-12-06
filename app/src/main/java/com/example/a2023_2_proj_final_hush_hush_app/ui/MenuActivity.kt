@@ -15,6 +15,10 @@ class MenuActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
+
+
+
+
         setContentView(binding.root)
 //        binding.buttonLogin.setOnClickListener(this)
 //        binding.buttonNext.setOnClickListener(this)
