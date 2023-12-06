@@ -11,6 +11,11 @@
         android:id="@+id/navigation_notifications"
         android:title=""
         android:icon="@drawable/settings_icon"/>
+
+    <item
+        android:id="@+id/logout"
+        android:title=""
+        android:icon="@drawable/logout_icon"/>
 </menu>
 
 <!--<menu xmlns:android="http://schemas.android.com/apk/res/android">-->

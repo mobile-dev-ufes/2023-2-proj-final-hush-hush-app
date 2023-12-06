@@ -19,7 +19,8 @@ class RetrofitClient {
 //        private const val BASE_URL = "http://${IP}:${API_PORT}/api/"
 //        private const val BASE_URL = "http://559d-177-154-164-73.ngrok-free.app/api/"
         //MUDEI PARA
-        private const val BASE_URL = "http://192.168.0.101:8000/api/" // ip elaine
+//        private const val BASE_URL = "http://192.168.0.101:8000/api/" // ip elaine
+        private const val BASE_URL = "http://192.168.10.19:8000/api/" // ip filipe
 
         private fun getClientInstance(): Retrofit {
             val http = OkHttpClient.Builder()

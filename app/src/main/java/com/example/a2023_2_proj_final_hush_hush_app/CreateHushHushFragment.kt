@@ -3,11 +3,14 @@ package com.example.a2023_2_proj_final_hush_hush_app
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.post.StoreUpdateBody
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityLoginBinding
@@ -19,6 +22,7 @@ import com.example.a2023_2_proj_final_hush_hush_app.services.UserService
 import com.example.a2023_2_proj_final_hush_hush_app.ui.MenuActivity
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CreateHushHushViewModel
+import com.example.a2023_2_proj_final_hush_hush_app.viewModel.LoginViewModel
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.TermsOfUseViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,34 +40,24 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
     private lateinit var createHushHushVM: CreateHushHushViewModel
     private lateinit var sp: Preferences
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-//        val fragView = inflater.inflate(R.layout.fragment_create_hush_hush, container, false)
         _binding = FragmentCreateHushHushBinding.inflate(inflater , container, false)
-
-
-//        binding.buttonCreate.setOnClickListener{
-//            showToast("entrei no toast")
-//
-//            this.onClick(it)}
-        binding.buttonCreate.setOnClickListener(this)
-//        this.setObserver()
+        sp = Preferences(requireContext().applicationContext)
+        createHushHushVM = ViewModelProvider(this)[CreateHushHushViewModel::class.java]
+        this.setListeners()
+        this.setObserver()
         return binding.root
 
     }
 
     override fun onClick(view: View) {
-        showToast("entrei no on Clickkkkkkkkk")
         if(view.id == R.id.button_create){
-            this.handleClickSignUpButton()
+            this.handleClickCreateButton()
         }
     }
 
-    private fun handleClickSignUpButton() {
-        showToast("entrei na funcao")
-
+    private fun handleClickCreateButton() {
         createHushHushVM.setIsLoading(true)
 
 
@@ -79,8 +73,8 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
         call.enqueue(object: Callback<StoreUpdatePatchResponse> {
             override fun onResponse(call: Call<StoreUpdatePatchResponse>, response: Response<StoreUpdatePatchResponse>,) {
                 if(response.isSuccessful) {
-                    showToast("hiiiii")
-                    changeActivity(HomeFragment::class.java) //TODO Change for the correct framgment and implement with NAVIGATION
+                    showToast("Hush-Hush created successful!")
+//                    changeActivity(HomeFragment::class.java) //TODO Change for the correct framgment and implement with NAVIGATION
                 } else {
                     showToast("Error creating hush-hush")
                 }
@@ -93,13 +87,6 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
                 showToast("Internal Server Error!")
             }
         })
-        //            }
-        //            else{
-        //                val text = "You have to accept the terms of use to prossegue!"
-        //                val duration = Toast.LENGTH_SHORT
-        //                val toast = Toast.makeText(applicationContext, text, duration)
-        //                toast.show()
-        //            }
     }
 
     fun showToast(message: String) {
@@ -117,17 +104,37 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
     private fun setObserver() {
         createHushHushVM.isLoading().observe(viewLifecycleOwner) {
             binding.buttonCreate.isEnabled = !it
-//            binding.buttonLogin.isEnabled = !it
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    private fun setListeners() {
+        binding.createEditTitle.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                createHushHushVM.setTitle(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        binding.createHushHushBody.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                createHushHushVM.setContent(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        binding.buttonCreate.setOnClickListener(this)
+    }
 
 
 }
