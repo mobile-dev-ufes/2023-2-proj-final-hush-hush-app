@@ -14,13 +14,16 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.post.StoreUpdateBody
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityLoginBinding
+import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityMenuBinding
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentCreateHushHushBinding
 import com.example.a2023_2_proj_final_hush_hush_app.responses.post.StoreUpdatePatchResponse
+import com.example.a2023_2_proj_final_hush_hush_app.responses.user.ShowResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.user.StoreLoginResponse
 import com.example.a2023_2_proj_final_hush_hush_app.services.PostService
 import com.example.a2023_2_proj_final_hush_hush_app.services.UserService
 import com.example.a2023_2_proj_final_hush_hush_app.ui.MenuActivity
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
+import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CardProfileViewModel
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CreateHushHushViewModel
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.LoginViewModel
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.TermsOfUseViewModel
@@ -33,6 +36,7 @@ import java.util.Locale
 class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  View.OnClickListener {
     private var postService = RetrofitClient.createService(PostService::class.java)
     private var _binding: FragmentCreateHushHushBinding? = null
+
 
     private val binding get() = _binding!!
 
@@ -47,6 +51,9 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
         createHushHushVM = ViewModelProvider(this)[CreateHushHushViewModel::class.java]
         this.setListeners()
         this.setObserver()
+
+
+
         return binding.root
 
     }
@@ -105,6 +112,7 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
         createHushHushVM.isLoading().observe(viewLifecycleOwner) {
             binding.buttonCreate.isEnabled = !it
         }
+
     }
 
     override fun onDestroyView() {
@@ -135,6 +143,8 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
 
         binding.buttonCreate.setOnClickListener(this)
     }
+
+
 
 
 }

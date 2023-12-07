@@ -12,9 +12,13 @@ import com.example.a2023_2_proj_final_hush_hush_app.R
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentUserProfileBinding
 import com.example.a2023_2_proj_final_hush_hush_app.responses.post.IndexResponse
+import com.example.a2023_2_proj_final_hush_hush_app.responses.user.ShowResponse
 import com.example.a2023_2_proj_final_hush_hush_app.services.PostService
+import com.example.a2023_2_proj_final_hush_hush_app.services.UserService
 import com.example.a2023_2_proj_final_hush_hush_app.ui.view.ListHushHushAdapter
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
+import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CardProfileViewModel
+import com.example.a2023_2_proj_final_hush_hush_app.viewModel.LoginViewModel
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.UserProfileViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +29,9 @@ import java.util.Locale
 class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
     private var _binding: FragmentUserProfileBinding? = null
     private lateinit var sp: Preferences
+    private lateinit var cardProfileVM: CardProfileViewModel
+    //    private val binding get() = _binding!!
+    private var userService = RetrofitClient.createService(UserService::class.java)
 
     private val binding get() = _binding!!
     private var postService = RetrofitClient.createService(PostService::class.java)
@@ -42,11 +49,18 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
+        cardProfileVM = ViewModelProvider(this)[CardProfileViewModel::class.java]
         sp = Preferences(requireContext().applicationContext)
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         binding.recyclerListHushHush.layoutManager = LinearLayoutManager(this.context) // pode dar erro
         binding.recyclerListHushHush.adapter = adapter
         this.getListHushHush()
+
+        //request to API:
+        this.setObserver()
+        this.getCardProfileData()
+
+
         return binding.root
     }
 
@@ -88,6 +102,44 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
 
     fun showToast(message: String) {
         Toast.makeText(requireContext().applicationContext, message, Toast.LENGTH_LONG).show()
+    }
+
+    private fun getCardProfileData(){
+        val currentLocale: Locale = resources.configuration.locales[0]
+        val language: String = currentLocale.language
+        val token = sp.getToken()
+//        showToast(token)
+        val call = userService.showByLoggedUser(token, language)
+
+        call.enqueue(object: Callback<ShowResponse> {
+            override fun onResponse(call: Call<ShowResponse>, response: Response<ShowResponse>) {
+                if(response.isSuccessful) {
+                    val res = response.body()
+                    cardProfileVM.setUsername(res!!.username)
+                    cardProfileVM.setMemberSince(res!!.createdAt)
+                    cardProfileVM.setNumHushHush(res!!.postsCount)
+                    showToast(res!!.username)
+                    showToast("aquiii")
+
+                }else{
+                    showToast("An error has occurred.")
+                }
+
+            }
+
+            override fun onFailure(call: Call<ShowResponse>, t: Throwable) {
+                showToast("Internal Server Error!")
+            }
+        })
+    }
+
+    private fun setObserver() {
+        cardProfileVM.username().observe(viewLifecycleOwner){
+            binding.cardProfile.profileUsername.text = it
+        }
+//        homeVM.isLoading().observe(viewLifecycleOwner) {
+//            binding.cardSearch.searchButton.isEnabled = !it
+//        }
     }
 
 }

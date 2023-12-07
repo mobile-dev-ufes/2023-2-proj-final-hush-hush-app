@@ -5,10 +5,11 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:elevation="4dp"
-    android:backgroundTint="@color/black">
+    android:backgroundTint="@color/black"
+    >
 
     <TextView
-        android:id="@+id/textView_profile_username"
+        android:id="@+id/profile_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/profile_bigger_icon"
