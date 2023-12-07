@@ -25,6 +25,8 @@
     <string name="agreed_to_terms">Li e concordo com os termos e condições. </string>
     <string name="new_hush_hush">Nova hush-hush</string>
     <string name="type_hush_hush">Digite o seu hush hush...</string>
+    <string name="search_hush_hush">Procure por hush hushes...</string>
+    <string name="recent_confessions">Confissões Recentes</string>
 
 
 </resources>

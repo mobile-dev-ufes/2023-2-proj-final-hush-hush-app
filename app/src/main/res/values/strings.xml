@@ -23,6 +23,8 @@
     <string name="agreed_to_terms">I have read and agreed to the terms and conditions </string>
     <string name="new_hush_hush">New hush-hush</string>
     <string name="type_hush_hush">Type your hush hush...</string>
+    <string name="search_hush_hush">Search for hush hushes...</string>
+    <string name="recent_confessions">Recent Confessions</string>
 
 
 </resources>
