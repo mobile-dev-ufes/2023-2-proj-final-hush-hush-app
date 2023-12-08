@@ -23,6 +23,9 @@
     <string name="agreed_to_terms">I have read and agreed to the terms and conditions </string>
     <string name="new_hush_hush">New hush-hush</string>
     <string name="type_hush_hush">Type your hush hush...</string>
+    <string name="member_since">Member since %1$s</string>
+    <string name="qtd_hush_hush">%1$s hush hush</string>
 
 
+    qtd_hush_hush
 </resources>

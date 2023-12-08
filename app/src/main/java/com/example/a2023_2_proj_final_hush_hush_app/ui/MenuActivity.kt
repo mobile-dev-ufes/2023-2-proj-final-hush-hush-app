@@ -30,7 +30,6 @@ class MenuActivity() : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.showToast("ON CREATE ENTIEWRDJRFJIKFJK")
         binding = ActivityMenuBinding.inflate(layoutInflater)
 
 
@@ -49,16 +48,14 @@ class MenuActivity() : AppCompatActivity(), View.OnClickListener {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.menu, menu)
-        this.showToast("ONCREATE")
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        this.showToast("entrou 1")
+
 
        return when (item.itemId) {
             R.id.logout -> {
-                this.showToast("entrou 2")
                 true
             }
             else -> {

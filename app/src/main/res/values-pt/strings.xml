@@ -25,6 +25,11 @@
     <string name="agreed_to_terms">Li e concordo com os termos e condições. </string>
     <string name="new_hush_hush">Nova hush-hush</string>
     <string name="type_hush_hush">Digite o seu hush hush...</string>
+    <string name="member_since">Entrou em %1$s</string>
+    <string name="qtd_hush_hush">%1$s hush hush</string>
+
+
+
 
 
 </resources>

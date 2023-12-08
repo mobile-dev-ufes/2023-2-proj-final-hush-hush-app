@@ -1,5 +1,6 @@
 package com.example.a2023_2_proj_final_hush_hush_app.ui
 
+import android.icu.text.SimpleDateFormat
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,7 +19,6 @@ import com.example.a2023_2_proj_final_hush_hush_app.services.UserService
 import com.example.a2023_2_proj_final_hush_hush_app.ui.view.ListHushHushAdapter
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CardProfileViewModel
-import com.example.a2023_2_proj_final_hush_hush_app.viewModel.LoginViewModel
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.UserProfileViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -119,7 +119,6 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                     cardProfileVM.setMemberSince(res!!.createdAt)
                     cardProfileVM.setNumHushHush(res!!.postsCount)
                     showToast(res!!.username)
-                    showToast("aquiii")
 
                 }else{
                     showToast("An error has occurred.")
@@ -137,9 +136,41 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
         cardProfileVM.username().observe(viewLifecycleOwner){
             binding.cardProfile.profileUsername.text = it
         }
-//        homeVM.isLoading().observe(viewLifecycleOwner) {
-//            binding.cardSearch.searchButton.isEnabled = !it
-//        }
+        cardProfileVM.numHushHush().observe(viewLifecycleOwner){
+            binding.cardProfile.qtdHushHush.text = getString(R.string.qtd_hush_hush, it)
+
+        }
+
+        cardProfileVM.memberSince().observe(viewLifecycleOwner){
+            var date = it
+            date = date.split(" ").first().toString()
+            date = dateFormat(date)
+            val memberSince = getString(R.string.member_since, date)
+            binding.cardProfile.memberSince.text = memberSince
+
+        }
+
+    }
+
+
+    private fun dateFormat(date : String): String{
+        var userLocale = Locale.getDefault().language.toString()
+        if(userLocale == "pt") {
+            val formatIn = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val dateAux = formatIn.parse(date)
+            val formatOut = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
+            return formatOut.format(dateAux).toString()
+
+        }else{
+            val formatIn = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val dateAux = formatIn.parse(date)
+            val formatOut = SimpleDateFormat("MM/dd/yyyy", Locale("en", "US"))
+            return  formatOut.format(dateAux).toString()
+
+        }
+        return date
+
+
     }
 
 }
