@@ -95,7 +95,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     sp.setUsername(response.body()!!.username)
                     sp.setProfilePicture(response.body()!!.profilePicture)
                     sp.setToken("${response.body()!!.token.tokenType} ${response.body()!!.token.accessToken}")
-                    showToast("${response.body()!!.token.tokenType} ${response.body()!!.token.accessToken}")
                     changeActivity(MenuActivity::class.java)
 
                 }else{

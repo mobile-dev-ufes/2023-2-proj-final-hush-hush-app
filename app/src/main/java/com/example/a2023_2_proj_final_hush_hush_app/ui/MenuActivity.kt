@@ -19,7 +19,6 @@ class MenuActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.showToast("ON CREATE ENTIEWRDJRFJIKFJK")
         binding = ActivityMenuBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
@@ -51,12 +50,6 @@ class MenuActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         }
-//        if (item.itemId == R.id.logout) {
-//            this.showToast("entrou 2")
-//            return true
-//        }
-//
-//        return super.onOptionsItemSelected(item)
     }
 
     override fun onClick(v: View?) {

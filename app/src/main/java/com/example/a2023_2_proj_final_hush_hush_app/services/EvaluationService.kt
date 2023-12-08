@@ -4,6 +4,7 @@ import retrofit2.Call
 import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface EvaluationService {
     @Headers("Accept: application/json")
@@ -11,6 +12,7 @@ interface EvaluationService {
     fun like(
         @Header("Authorization") token: String,
         @Header("Accept-Language") language: String,
+        @Path("commentId") commentId: Int,
     ): Call<Void>
 
     @Headers("Accept: application/json")
@@ -18,12 +20,14 @@ interface EvaluationService {
     fun dislike(
         @Header("Authorization") token: String,
         @Header("Accept-Language") language: String,
+        @Path("commentId") commentId: Int,
     ): Call<Void>
 
     @Headers("Accept: application/json")
-    @POST("comment/{commentId}/None")
+    @POST("comment/{commentId}/none")
     fun none(
         @Header("Authorization") token: String,
         @Header("Accept-Language") language: String,
+        @Path("commentId") commentId: Int,
     ): Call<Void>
 }
