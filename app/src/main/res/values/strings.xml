@@ -25,6 +25,5 @@
     <string name="type_hush_hush">Type your hush hush...</string>
     <string name="search_hush_hush">Search for hush hushes...</string>
     <string name="recent_confessions">Recent Confessions</string>
-
-
+    <string name="comments">Comments</string>
 </resources>

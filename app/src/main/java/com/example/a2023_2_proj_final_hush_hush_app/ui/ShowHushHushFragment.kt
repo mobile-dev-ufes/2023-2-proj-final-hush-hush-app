@@ -14,8 +14,10 @@ import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentShowHush
 import com.example.a2023_2_proj_final_hush_hush_app.interfaces.ViewHolderClickListener
 import com.example.a2023_2_proj_final_hush_hush_app.responses.comment.IndexResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.comment.ShowResponse
+import com.example.a2023_2_proj_final_hush_hush_app.responses.post.ShowResponse as PostShowResponse
 import com.example.a2023_2_proj_final_hush_hush_app.services.CommentService
 import com.example.a2023_2_proj_final_hush_hush_app.services.EvaluationService
+import com.example.a2023_2_proj_final_hush_hush_app.services.PostService
 import com.example.a2023_2_proj_final_hush_hush_app.ui.view.ListCommentsAdapter
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.ShowHushHushViewModel
@@ -25,14 +27,15 @@ import retrofit2.Response
 import java.util.Locale
 
 class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHolderClickListener {
-    private lateinit var viewModel: ShowHushHushViewModel
+    private lateinit var showHushHushVM: ShowHushHushViewModel
     private var _binding: FragmentShowHushHushBinding? = null
     private lateinit var sp: Preferences
     private lateinit var adapter: ListCommentsAdapter
     private val binding get() = _binding!!
     private var commentService = RetrofitClient.createService(CommentService::class.java)
     private var evaluationService = RetrofitClient.createService(EvaluationService::class.java)
-
+    private var postService = RetrofitClient.createService(PostService::class.java)
+    private val postId = 10
 //    companion object {
 //        fun newInstance(comments: IndexResponse): ShowHushHushFragment {
 //            val fragment = ShowHushHushFragment()
@@ -43,25 +46,49 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+        showHushHushVM = ViewModelProvider(this)[ShowHushHushViewModel::class.java]
         sp = Preferences(requireContext().applicationContext)
         _binding = FragmentShowHushHushBinding.inflate(inflater, container, false)
         binding.recyclerListComments.layoutManager = LinearLayoutManager(this.context)
         adapter = ListCommentsAdapter(binding.recyclerListComments, this)
         binding.recyclerListComments.adapter = adapter
+
+        this.setObserver()
+
+        this.getHushHush()
         this.getListComments()
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[ShowHushHushViewModel::class.java]
+    private fun getHushHush() {
+        val currentLocale: Locale = resources.configuration.locales[0]
+        val language: String = currentLocale.language
+        val token = sp.getToken()
+
+        val call = postService.show(token, language, postId)
+
+        call.enqueue(object:
+            Callback<PostShowResponse> {
+            override fun onResponse(call: Call<PostShowResponse>, response: Response<PostShowResponse>) {
+                if(response.isSuccessful) {
+                    val post = response.body()!!
+                    showHushHushVM.setHushHush(post)
+
+                }else{
+                    showToast("An error has occurred when load Hush-Hush.")
+                }
+            }
+
+            override fun onFailure(call: Call<PostShowResponse>, t: Throwable) {
+                showToast("Internal Server Error!")
+            }
+        })
     }
 
     private fun getListComments() {
         val currentLocale: Locale = resources.configuration.locales[0]
         val language: String = currentLocale.language
         val token = sp.getToken()
-        val postId = 10
 
         val call = commentService.index(token, language, postId)
 
@@ -185,5 +212,15 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
                 showToast("Internal Server Error!")
             }
         })
+    }
+
+    private fun setObserver() {
+        showHushHushVM.hushHush().observe(this) {
+            binding.cardHushHushDetails.username.text = it.user.username
+            binding.cardHushHushDetails.createdAt.text = it.createdAt
+            binding.cardHushHushDetails.title.text = it.title
+            binding.cardHushHushDetails.content.text = it.content
+            binding.cardHushHushDetails.commentsCount.text = it.commentsCount.toString()
+        }
     }
 }
