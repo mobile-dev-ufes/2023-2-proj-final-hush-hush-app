@@ -139,9 +139,8 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
     }
 
     override fun onClick(view: View) {
-        if(view.id == R.id.button_send_comment ){
+        if(view.id == R.id.button_send_comment){
             this.handleClickSendComment()
-
         }
     }
 
@@ -249,12 +248,16 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
             binding.cardWriteComment.buttonSendComment.isEnabled = !it
         }
 
+        showHushHushVM.clearCommentContent().observe(viewLifecycleOwner) {
+            binding.cardWriteComment.writeComment.text.clear();
+        }
     }
 
     private fun handleClickSendComment() {
         this.sendComment()
-        this.getListComments()  //to include the new comment in list
-        binding.cardWriteComment.writeComment.text.clear();
+        this.getListComments()
+        this.getHushHush()
+        showHushHushVM.executeClearCommentContent()
     }
 
 

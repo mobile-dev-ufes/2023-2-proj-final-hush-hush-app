@@ -9,28 +9,37 @@ class ShowHushHushViewModel : ViewModel() {
     private var hushHush = MutableLiveData<ShowResponse>()
     private var commentContent = MutableLiveData<String>()
     private var isLoading = MutableLiveData<Boolean>()
+    private var clearCommentContent = MutableLiveData(true)
 
     fun hushHush(): LiveData<ShowResponse> {
         return this.hushHush
-    }
-
-    fun setHushHush(hushHush: ShowResponse) {
-        this.hushHush.value = hushHush
-    }
-
-    fun setCommentContent(commentContent : String){
-        this.commentContent.value = commentContent
     }
 
     fun commentContent(): LiveData<String>{
         return this.commentContent
     }
 
-    fun setIsLoading(isLoading : Boolean){
+    fun isLoading():  LiveData<Boolean> {
+        return this.isLoading
+    }
+
+    fun clearCommentContent():  LiveData<Boolean> {
+        return this.clearCommentContent
+    }
+
+    fun setHushHush(hushHush: ShowResponse) {
+        this.hushHush.value = hushHush
+    }
+
+    fun setCommentContent(commentContent: String){
+        this.commentContent.value = commentContent
+    }
+
+    fun setIsLoading(isLoading: Boolean){
         this.isLoading.value = isLoading
     }
 
-    fun isLoading() :  LiveData<Boolean> {
-        return this.isLoading
+    fun executeClearCommentContent() {
+        this.clearCommentContent.value = !this.clearCommentContent.value!!
     }
 }
