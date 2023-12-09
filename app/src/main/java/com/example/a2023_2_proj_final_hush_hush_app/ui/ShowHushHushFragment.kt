@@ -185,9 +185,7 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
 
         call.enqueue(object: Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if(response.isSuccessful) {
-                    showToast("Like successful!")
-                } else {
+                if(!response.isSuccessful) {
                     showToast("An error has occurred.")
                 }
             }
@@ -207,9 +205,7 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
 
         call.enqueue(object: Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if(response.isSuccessful) {
-                    showToast("Dislike successful!")
-                } else {
+                if(!response.isSuccessful) {
                     showToast("An error has occurred.")
                 }
             }
@@ -229,10 +225,8 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
 
         call.enqueue(object: Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if(response.isSuccessful) {
+                if(!response.isSuccessful) {
                     showToast("Success on remove evaluation!")
-                } else {
-                    showToast("An error has occurred.")
                 }
             }
 
@@ -279,12 +273,9 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
         call.enqueue(object: Callback<StoreUpdateResponse> {
             override fun onResponse(call: Call<StoreUpdateResponse>, response: Response<StoreUpdateResponse>,) {
                 if(response.isSuccessful) {
-                    showToast("Comment send successfully")
-                    //showHushHushVM.setCommentContent(" ") // to clean the form
-
-
+                    showToast("Comment submitted successfully!")
                 }else{
-                    showToast("Wrong username or password.")
+                    showToast("Error on submit comment.")
                 }
 
                 showHushHushVM.setIsLoading(false)
