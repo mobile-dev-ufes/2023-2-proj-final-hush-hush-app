@@ -34,7 +34,7 @@ interface CommentService {
     ): Call<StoreUpdateResponse>
 
     @Headers("Accept: application/json")
-    @GET("/post/{postId}/comments")
+    @GET("post/{postId}/comments")
     fun index(
         @Header("Authorization") token: String,
         @Header("Accept-Language") language: String,
@@ -45,7 +45,7 @@ interface CommentService {
     ): Call<IndexResponse>
 
     @Headers("Accept: application/json")
-    @DELETE("/comment/{commentId}")
+    @DELETE("comment/{commentId}")
     fun delete(
         @Header("Authorization") token: String,
         @Header("Accept-Language") language: String,

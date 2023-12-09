@@ -27,9 +27,9 @@
     <string name="type_hush_hush">Digite o seu hush hush...</string>
     <string name="member_since">Entrou em %1$s</string>
     <string name="qtd_hush_hush">%1$s hush hush</string>
-
-
-
-
+    <string name="search_hush_hush">Procure por hush hushes…</string>
+    <string name="recent_confessions">Confissões Recentes</string>
+    <string name="comments">Comentários</string>
+    <string name="type_comment">Digite o seu comentário</string>
 
 </resources>

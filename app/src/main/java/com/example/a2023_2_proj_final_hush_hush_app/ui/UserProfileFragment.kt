@@ -78,7 +78,7 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
         val currentLocale: Locale = resources.configuration.locales[0]
         val language: String = currentLocale.language
         val token = sp.getToken()
-//        showToast(token)
+
         val call = postService.indexByLoggedUser(token, language)
 
         call.enqueue(object: Callback<IndexResponse> {

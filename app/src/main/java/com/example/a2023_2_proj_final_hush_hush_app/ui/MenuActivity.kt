@@ -63,12 +63,6 @@ class MenuActivity() : AppCompatActivity(), View.OnClickListener {
             }
 
         }
-//        if (item.itemId == R.id.logout) {
-//            this.showToast("entrou 2")
-//            return true
-//        }
-//
-//        return super.onOptionsItemSelected(item)
     }
 
     override fun onClick(v: View?) {

@@ -25,7 +25,8 @@
     <string name="type_hush_hush">Type your hush hush...</string>
     <string name="member_since">Member since %1$s</string>
     <string name="qtd_hush_hush">%1$s hush hush</string>
-
-
-    qtd_hush_hush
+    <string name="search_hush_hush">Search for hush hushes...</string>
+    <string name="recent_confessions">Recent Confessions</string>
+    <string name="comments">Comments</string>
+    <string name="type_comment">Type your comment</string>
 </resources>
