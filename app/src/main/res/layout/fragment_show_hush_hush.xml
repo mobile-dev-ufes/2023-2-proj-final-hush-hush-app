@@ -19,7 +19,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_list_comments"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/card_hush_hush_details"
         app:layout_constraintBottom_toTopOf="@+id/card_write_comment"
         app:layout_constraintStart_toStartOf="parent"

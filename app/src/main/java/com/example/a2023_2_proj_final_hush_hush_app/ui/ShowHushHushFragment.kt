@@ -35,7 +35,7 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
     private var commentService = RetrofitClient.createService(CommentService::class.java)
     private var evaluationService = RetrofitClient.createService(EvaluationService::class.java)
     private var postService = RetrofitClient.createService(PostService::class.java)
-    private val postId = 1
+    private val postId = 10
 //    companion object {
 //        fun newInstance(comments: IndexResponse): ShowHushHushFragment {
 //            val fragment = ShowHushHushFragment()
