@@ -2,18 +2,26 @@ package com.example.a2023_2_proj_final_hush_hush_app.ui
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2023_2_proj_final_hush_hush_app.R
+import com.example.a2023_2_proj_final_hush_hush_app.bodies.comment.StoreUpdateBody
+import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.LoginBody
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentShowHushHushBinding
 import com.example.a2023_2_proj_final_hush_hush_app.interfaces.ViewHolderClickListener
 import com.example.a2023_2_proj_final_hush_hush_app.responses.comment.IndexResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.comment.ShowResponse
+import com.example.a2023_2_proj_final_hush_hush_app.responses.comment.StoreUpdateResponse
+import com.example.a2023_2_proj_final_hush_hush_app.responses.user.StoreLoginResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.post.ShowResponse as PostShowResponse
 import com.example.a2023_2_proj_final_hush_hush_app.services.CommentService
 import com.example.a2023_2_proj_final_hush_hush_app.services.EvaluationService
@@ -26,7 +34,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.Locale
 
-class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHolderClickListener {
+class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHolderClickListener , OnClickListener{
     private lateinit var showHushHushVM: ShowHushHushViewModel
     private var _binding: FragmentShowHushHushBinding? = null
     private lateinit var sp: Preferences
@@ -52,6 +60,18 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
         binding.recyclerListComments.layoutManager = LinearLayoutManager(this.context)
         adapter = ListCommentsAdapter(binding.recyclerListComments, this)
         binding.recyclerListComments.adapter = adapter
+
+        binding.cardWriteComment.buttonSendComment.setOnClickListener(this)
+
+        binding.cardWriteComment.writeComment.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                showHushHushVM.setCommentContent(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
         this.setObserver()
 
@@ -118,6 +138,13 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
         Toast.makeText(requireContext().applicationContext, message, Toast.LENGTH_LONG).show()
     }
 
+    override fun onClick(view: View) {
+        if(view.id == R.id.button_send_comment ){
+            this.handleClickSendComment()
+
+        }
+    }
+
     override fun onClick(index: Int, evaluation: String) {
         val comment = adapter.getCommentByIndex(index)
         this.adapter.disableEvaluationsByIndex(index)
@@ -131,6 +158,7 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
         this.getListComments()
         this.adapter.enableEvaluationsByIndex(index)
     }
+
 
     private fun handleClickLike(comment: ShowResponse) {
         if (comment.userEvaluation == "Like") {
@@ -222,5 +250,50 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
             binding.cardHushHushDetails.content.text = it.content
             binding.cardHushHushDetails.commentsCount.text = it.commentsCount.toString()
         }
+
+        showHushHushVM.isLoading().observe(viewLifecycleOwner){
+            binding.cardWriteComment.buttonSendComment.isEnabled = !it
+        }
+
+    }
+
+    private fun handleClickSendComment() {
+        this.sendComment()
+        this.getListComments()  //to include the new comment in list
+        binding.cardWriteComment.writeComment.text.clear();
+    }
+
+
+    private fun sendComment(){
+        showHushHushVM.setIsLoading(true)
+        val currentLocale: Locale = resources.configuration.locales[0]
+        val language: String = currentLocale.language
+        val token = sp.getToken()
+
+        val body = StoreUpdateBody()
+        body.content = showHushHushVM.commentContent().value.toString()
+
+
+        val call = commentService.store(token, language, postId, body)
+
+        call.enqueue(object: Callback<StoreUpdateResponse> {
+            override fun onResponse(call: Call<StoreUpdateResponse>, response: Response<StoreUpdateResponse>,) {
+                if(response.isSuccessful) {
+                    showToast("Comment send successfully")
+                    //showHushHushVM.setCommentContent(" ") // to clean the form
+
+
+                }else{
+                    showToast("Wrong username or password.")
+                }
+
+                showHushHushVM.setIsLoading(false)
+            }
+
+            override fun onFailure(call: Call<StoreUpdateResponse>, t: Throwable) {
+                showHushHushVM.setIsLoading(false)
+                showToast("Internal Server Error!")
+            }
+        })
     }
 }
