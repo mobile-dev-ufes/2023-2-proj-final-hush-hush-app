@@ -28,6 +28,7 @@ import com.example.a2023_2_proj_final_hush_hush_app.services.EvaluationService
 import com.example.a2023_2_proj_final_hush_hush_app.services.PostService
 import com.example.a2023_2_proj_final_hush_hush_app.ui.view.ListCommentsAdapter
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
+import com.example.a2023_2_proj_final_hush_hush_app.utils.Utils
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.ShowHushHushViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,7 +36,7 @@ import retrofit2.Response
 import java.util.Locale
 
 class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHolderClickListener , OnClickListener{
-    private lateinit var showHushHushVM: ShowHushHushViewModel
+    private lateinit var showHushHushVM: ShowHushHushViewModel;
     private var _binding: FragmentShowHushHushBinding? = null
     private lateinit var sp: Preferences
     private lateinit var adapter: ListCommentsAdapter
@@ -54,8 +55,9 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        showHushHushVM = ViewModelProvider(this)[ShowHushHushViewModel::class.java]
         sp = Preferences(requireContext().applicationContext)
+        showHushHushVM = ViewModelProvider(this)[ShowHushHushViewModel::class.java]
+
         _binding = FragmentShowHushHushBinding.inflate(inflater, container, false)
         binding.recyclerListComments.layoutManager = LinearLayoutManager(this.context)
         adapter = ListCommentsAdapter(binding.recyclerListComments, this)
@@ -238,7 +240,7 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
     private fun setObserver() {
         showHushHushVM.hushHush().observe(viewLifecycleOwner) {
             binding.cardHushHushDetails.username.text = it.user.username
-            binding.cardHushHushDetails.createdAt.text = it.createdAt
+            binding.cardHushHushDetails.createdAt.text = Utils.formatDateAccordingUserLocale(it.createdAt)
             binding.cardHushHushDetails.title.text = it.title
             binding.cardHushHushDetails.content.text = it.content
             binding.cardHushHushDetails.commentsCount.text = it.commentsCount.toString()

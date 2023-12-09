@@ -18,6 +18,7 @@ import com.example.a2023_2_proj_final_hush_hush_app.services.PostService
 import com.example.a2023_2_proj_final_hush_hush_app.services.UserService
 import com.example.a2023_2_proj_final_hush_hush_app.ui.view.ListHushHushAdapter
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
+import com.example.a2023_2_proj_final_hush_hush_app.utils.Utils
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CardProfileViewModel
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.UserProfileViewModel
 import retrofit2.Call
@@ -28,14 +29,12 @@ import java.util.Locale
 
 class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
     private var _binding: FragmentUserProfileBinding? = null
+    private val binding get() = _binding!!
     private lateinit var sp: Preferences
     private lateinit var cardProfileVM: CardProfileViewModel
-    //    private val binding get() = _binding!!
+
     private var userService = RetrofitClient.createService(UserService::class.java)
-
-    private val binding get() = _binding!!
     private var postService = RetrofitClient.createService(PostService::class.java)
-
 
 //    companion object {
 //        fun newInstance() = UserProfileFragment()
@@ -52,14 +51,12 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
         cardProfileVM = ViewModelProvider(this)[CardProfileViewModel::class.java]
         sp = Preferences(requireContext().applicationContext)
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
-        binding.recyclerListHushHush.layoutManager = LinearLayoutManager(this.context) // pode dar erro
+        binding.recyclerListHushHush.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerListHushHush.adapter = adapter
-        this.getListHushHush()
 
-        //request to API:
+        this.getListHushHush()
         this.setObserver()
         this.getCardProfileData()
-
 
         return binding.root
     }
@@ -85,11 +82,9 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
             override fun onResponse(call: Call<IndexResponse>, response: Response<IndexResponse>) {
                 if(response.isSuccessful) {
                    adapter.updateHushHushList(response.body()!!.data)
-
                 }else{
                     showToast("An error has occurred.")
                 }
-
             }
 
             override fun onFailure(call: Call<IndexResponse>, t: Throwable) {
@@ -118,12 +113,10 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                     cardProfileVM.setUsername(res!!.username)
                     cardProfileVM.setMemberSince(res!!.createdAt)
                     cardProfileVM.setNumHushHush(res!!.postsCount)
-                    showToast(res!!.username)
 
                 }else{
                     showToast("An error has occurred.")
                 }
-
             }
 
             override fun onFailure(call: Call<ShowResponse>, t: Throwable) {
@@ -136,41 +129,18 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
         cardProfileVM.username().observe(viewLifecycleOwner){
             binding.cardProfile.profileUsername.text = it
         }
+
         cardProfileVM.numHushHush().observe(viewLifecycleOwner){
             binding.cardProfile.qtdHushHush.text = getString(R.string.qtd_hush_hush, it)
-
         }
 
         cardProfileVM.memberSince().observe(viewLifecycleOwner){
             var date = it
             date = date.split(" ").first().toString()
-            date = dateFormat(date)
+            date = Utils.formatDateAccordingUserLocale(date, "yyyy-MM-dd", false)
+
             val memberSince = getString(R.string.member_since, date)
             binding.cardProfile.memberSince.text = memberSince
-
         }
-
     }
-
-
-    private fun dateFormat(date : String): String{
-        var userLocale = Locale.getDefault().language.toString()
-        if(userLocale == "pt") {
-            val formatIn = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val dateAux = formatIn.parse(date)
-            val formatOut = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
-            return formatOut.format(dateAux).toString()
-
-        }else{
-            val formatIn = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val dateAux = formatIn.parse(date)
-            val formatOut = SimpleDateFormat("MM/dd/yyyy", Locale("en", "US"))
-            return  formatOut.format(dateAux).toString()
-
-        }
-        return date
-
-
-    }
-
 }

@@ -22,28 +22,14 @@ import java.util.Locale
 
 
 class MenuActivity() : AppCompatActivity(), View.OnClickListener {
-
     private lateinit var binding: ActivityMenuBinding
     private lateinit var sp: Preferences
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
-
-
-
-
-
         setContentView(binding.root)
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        this.showToast("entrou sdlfjsdjkf")
-//        menuInflater.inflate(R.menu.menu, menu)
-//        return true
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
@@ -52,8 +38,6 @@ class MenuActivity() : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-
        return when (item.itemId) {
             R.id.logout -> {
                 true
@@ -61,7 +45,6 @@ class MenuActivity() : AppCompatActivity(), View.OnClickListener {
             else -> {
                 super.onOptionsItemSelected(item)
             }
-
         }
     }
 
@@ -72,9 +55,4 @@ class MenuActivity() : AppCompatActivity(), View.OnClickListener {
     private fun showToast(message: String) {
         Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
     }
-
-    //request to API
-
-
-
 }

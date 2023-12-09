@@ -12,7 +12,6 @@
         layout="@layout/card_hush_hush_details"
         app:layout_constraintBottom_toTopOf="@id/recycler_list_comments"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
