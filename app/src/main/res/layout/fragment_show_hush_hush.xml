@@ -8,20 +8,32 @@
     tools:context=".ui.ShowHushHushFragment">
 
     <include
-        layout="@layout/card_hush_hush_details"
         android:id="@+id/card_hush_hush_details"
-        app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/card_hush_hush_details"
         app:layout_constraintBottom_toTopOf="@id/recycler_list_comments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_list_comments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/card_hush_hush_details"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/card_write_comment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0" />
+
+    <include
+        android:id="@+id/card_write_comment"
+        layout="@layout/card_write_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_list_comments"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

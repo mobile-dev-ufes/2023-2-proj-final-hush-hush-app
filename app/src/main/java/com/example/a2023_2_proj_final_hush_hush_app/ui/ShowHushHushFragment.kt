@@ -35,7 +35,7 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
     private var commentService = RetrofitClient.createService(CommentService::class.java)
     private var evaluationService = RetrofitClient.createService(EvaluationService::class.java)
     private var postService = RetrofitClient.createService(PostService::class.java)
-    private val postId = 10
+    private val postId = 1
 //    companion object {
 //        fun newInstance(comments: IndexResponse): ShowHushHushFragment {
 //            val fragment = ShowHushHushFragment()
@@ -44,7 +44,7 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
 //        }
 //    }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
         showHushHushVM = ViewModelProvider(this)[ShowHushHushViewModel::class.java]
         sp = Preferences(requireContext().applicationContext)
@@ -215,7 +215,7 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
     }
 
     private fun setObserver() {
-        showHushHushVM.hushHush().observe(this) {
+        showHushHushVM.hushHush().observe(viewLifecycleOwner) {
             binding.cardHushHushDetails.username.text = it.user.username
             binding.cardHushHushDetails.createdAt.text = it.createdAt
             binding.cardHushHushDetails.title.text = it.title
