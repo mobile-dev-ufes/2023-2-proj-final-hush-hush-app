@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.a2023_2_proj_final_hush_hush_app.R
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.post.StoreUpdateBody
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
@@ -40,13 +41,10 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
         _binding = FragmentCreateHushHushBinding.inflate(inflater , container, false)
         sp = Preferences(requireContext().applicationContext)
         createHushHushVM = ViewModelProvider(this)[CreateHushHushViewModel::class.java]
+
         this.setListeners()
         this.setObserver()
-
-
-
         return binding.root
-
     }
 
     override fun onClick(view: View) {
@@ -56,8 +54,11 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
     }
 
     private fun handleClickCreateButton() {
-        createHushHushVM.setIsLoading(true)
+        this.createHushHush()
+    }
 
+    private fun createHushHush() {
+        createHushHushVM.setIsLoading(true)
 
         val body = StoreUpdateBody()
         body.title = createHushHushVM.title().value.toString()
@@ -72,7 +73,10 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
             override fun onResponse(call: Call<StoreUpdatePatchResponse>, response: Response<StoreUpdatePatchResponse>,) {
                 if(response.isSuccessful) {
                     showToast("Hush-Hush created successful!")
-//                    changeActivity(HomeFragment::class.java) //TODO Change for the correct framgment and implement with NAVIGATION
+
+                    val postId = response.body()!!.id
+                    redirectToShowHushHushFragment(postId)
+                    createHushHushVM.executeClearContent()
                 } else {
                     showToast("Error creating hush-hush")
                 }
@@ -92,18 +96,15 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
         Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show();
     }
 
-    fun <S> changeActivity(sourceActivity: Class<S>) {
-//        val intent = Intent(this, sourceActivity)
-        val intentFromActivity = requireActivity().intent //TODO : Change for naviation!!!!!!!!!!
-        startActivity(intentFromActivity)
-    }
-
-
     private fun setObserver() {
         createHushHushVM.isLoading().observe(viewLifecycleOwner) {
             binding.buttonCreate.isEnabled = !it
         }
 
+        createHushHushVM.clearContent().observe(viewLifecycleOwner) {
+            binding.createEditTitle.text.clear()
+            binding.createHushHushBody.text.clear()
+        }
     }
 
     override fun onDestroyView() {
@@ -133,5 +134,10 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
         })
 
         binding.buttonCreate.setOnClickListener(this)
+    }
+
+    private fun redirectToShowHushHushFragment(postId: Int) {
+        val action = CreateHushHushFragmentDirections.actionCreateHushHushFragmentToShowHushHushFragment(postId)
+        findNavController().navigate(action)
     }
 }

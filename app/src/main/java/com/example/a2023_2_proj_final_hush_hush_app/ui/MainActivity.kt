@@ -13,17 +13,16 @@ class MainActivity : AppCompatActivity() ,  View.OnClickListener {
     private lateinit var sp: Preferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sp = Preferences(applicationContext)
-
-        if (sp.tokenIsFilled()) {
-            this.changeActivity(MenuActivity::class.java)
-            finish()
-        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.buttonRegister.setOnClickListener(this)
         binding.buttonLogin.setOnClickListener(this)
+        sp = Preferences(applicationContext)
+        if (sp.tokenIsFilled()) {
+            this.changeActivity(MenuActivity::class.java)
+            finish()
+        }
     }
 
     override fun onClick(view: View) {
