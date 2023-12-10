@@ -1,46 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_hush_hush"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:elevation="4dp"
-    android:backgroundTint="@color/black"
-    >
+    android:background="@color/black"
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/profile_username"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/profile_2_icon"
-        android:drawablePadding="8dp"
-        android:text="fulaninho_de_tal"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="15dp"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile_2_icon"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"/>
 
-    <TextView
-        android:id="@+id/qtd_hush_hush"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="\u2022 10 hush-hush"
-        android:textSize="15sp"
-        android:padding="16dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="60dp"
-        android:layout_marginStart="95dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/member_since"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="\u2022 Member since 2016"
-        android:textSize="15sp"
-        android:padding="16dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="80dp"
-        android:layout_marginStart="95dp"/>
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/profile_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="fulaninho_de_tal"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:layout_margin="10dp" />
+
+            <TextView
+                android:id="@+id/qtd_hush_hush"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\u2022 10 hush-hush"
+                android:textSize="15sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/member_since"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\u2022 Member since 2016"
+                android:textSize="15sp"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
