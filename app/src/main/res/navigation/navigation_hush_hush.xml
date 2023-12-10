@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_hush_hush"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/createHushHushFragment"
+        android:name="com.example.a2023_2_proj_final_hush_hush_app.ui.CreateHushHushFragment"
+        android:label="fragment_create_hush_hush"
+        tools:layout="@layout/fragment_create_hush_hush" >
+        <action
+            android:id="@+id/action_createHushHushFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_createHushHushFragment_to_showHushHushFragment"
+            app:destination="@id/showHushHushFragment" />
+        <action
+            android:id="@+id/action_createHushHushFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.a2023_2_proj_final_hush_hush_app.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_createHushHushFragment2"
+            app:destination="@id/createHushHushFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_showHushHushFragment"
+            app:destination="@id/showHushHushFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showHushHushFragment"
+        android:name="com.example.a2023_2_proj_final_hush_hush_app.ui.ShowHushHushFragment"
+        android:label="fragment_show_hush_hush"
+        tools:layout="@layout/fragment_show_hush_hush" >
+        <action
+            android:id="@+id/action_showHushHushFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_showHushHushFragment_to_createHushHushFragment"
+            app:destination="@id/createHushHushFragment" />
+        <action
+            android:id="@+id/action_showHushHushFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.a2023_2_proj_final_hush_hush_app.ui.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_showHushHushFragment"
+            app:destination="@id/showHushHushFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_createHushHushFragment"
+            app:destination="@id/createHushHushFragment" />
+    </fragment>
+</navigation>

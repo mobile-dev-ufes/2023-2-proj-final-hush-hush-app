@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/fragment_create_hush_hush"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CreateHushHushFragment">
+    tools:context=".ui.CreateHushHushFragment">
 
     <!--    title -->
     <TextView
@@ -23,7 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    first label-->
     <TextView
         android:id="@+id/textView_label_title"
         android:layout_width="wrap_content"
@@ -35,9 +35,7 @@
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-
-        />
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:id="@+id/create_edit_title"
@@ -55,7 +53,6 @@
         app:layout_constraintTop_toBottomOf="@id/textView_label_title"
         app:layout_constraintVertical_bias="0.5" />
 
-    <!--    second label-->
     <TextView
         android:id="@+id/textView_label_hush_body"
         android:layout_width="wrap_content"
@@ -99,7 +96,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.3" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 

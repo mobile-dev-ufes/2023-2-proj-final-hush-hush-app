@@ -1,25 +1,14 @@
 package com.example.a2023_2_proj_final_hush_hush_app.ui
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.a2023_2_proj_final_hush_hush_app.R
-import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityMenuBinding
-import com.example.a2023_2_proj_final_hush_hush_app.responses.user.ShowResponse
-import com.example.a2023_2_proj_final_hush_hush_app.services.UserService
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
-import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CardProfileViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.Locale
-
 
 class MenuActivity() : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMenuBinding
@@ -28,24 +17,25 @@ class MenuActivity() : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
+        this.setToolbarDrawerAndNavButton()
+
+//        binding.menu.setOnItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.navigation_dashboard -> {
+//                    showToast("CLICOU")
+//                    findNavController().navigate(R.id.action)
+//                    true
+//                } else -> false
+//            }
+//        }
+
         setContentView(binding.root)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-       return when (item.itemId) {
-            R.id.logout -> {
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
-        }
+    private fun setToolbarDrawerAndNavButton() {
+        val navHostFrag = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHostFrag.navController
+        binding.menu.setupWithNavController(navController)
     }
 
     override fun onClick(v: View?) {

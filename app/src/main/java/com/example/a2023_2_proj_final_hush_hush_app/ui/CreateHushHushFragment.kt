@@ -1,7 +1,6 @@
-package com.example.a2023_2_proj_final_hush_hush_app
+package com.example.a2023_2_proj_final_hush_hush_app.ui
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,22 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.a2023_2_proj_final_hush_hush_app.R
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.post.StoreUpdateBody
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
-import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityLoginBinding
-import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityMenuBinding
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentCreateHushHushBinding
 import com.example.a2023_2_proj_final_hush_hush_app.responses.post.StoreUpdatePatchResponse
-import com.example.a2023_2_proj_final_hush_hush_app.responses.user.ShowResponse
-import com.example.a2023_2_proj_final_hush_hush_app.responses.user.StoreLoginResponse
 import com.example.a2023_2_proj_final_hush_hush_app.services.PostService
-import com.example.a2023_2_proj_final_hush_hush_app.services.UserService
-import com.example.a2023_2_proj_final_hush_hush_app.ui.MenuActivity
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
-import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CardProfileViewModel
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CreateHushHushViewModel
-import com.example.a2023_2_proj_final_hush_hush_app.viewModel.LoginViewModel
-import com.example.a2023_2_proj_final_hush_hush_app.viewModel.TermsOfUseViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -143,8 +134,4 @@ class CreateHushHushFragment : Fragment(R.layout.fragment_create_hush_hush) ,  V
 
         binding.buttonCreate.setOnClickListener(this)
     }
-
-
-
-
 }

@@ -9,7 +9,6 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.a2023_2_proj_final_hush_hush_app.CreateHushHushFragment
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.LoginBody
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityLoginBinding
