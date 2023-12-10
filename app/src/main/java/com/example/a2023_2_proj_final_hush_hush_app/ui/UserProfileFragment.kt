@@ -1,6 +1,5 @@
 package com.example.a2023_2_proj_final_hush_hush_app.ui
 
-import android.icu.text.SimpleDateFormat
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,7 +19,7 @@ import com.example.a2023_2_proj_final_hush_hush_app.services.PostService
 import com.example.a2023_2_proj_final_hush_hush_app.services.UserService
 import com.example.a2023_2_proj_final_hush_hush_app.ui.view.ListHushHushAdapter
 import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
-import com.example.a2023_2_proj_final_hush_hush_app.utils.Utils
+import com.example.a2023_2_proj_final_hush_hush_app.utils.Date
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.CardProfileViewModel
 import com.example.a2023_2_proj_final_hush_hush_app.viewModel.UserProfileViewModel
 import retrofit2.Call
@@ -140,7 +139,7 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile), CardViewHo
         cardProfileVM.memberSince().observe(viewLifecycleOwner){
             var date = it
             date = date.split(" ").first().toString()
-            date = Utils.formatDateAccordingUserLocale(date, "yyyy-MM-dd", false)
+            date = Date.formatDateAccordingUserLocale(date, "yyyy-MM-dd", false)
 
             val memberSince = getString(R.string.member_since, date)
             binding.cardProfile.memberSince.text = memberSince

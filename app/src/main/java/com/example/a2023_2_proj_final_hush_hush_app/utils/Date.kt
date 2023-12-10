@@ -3,7 +3,7 @@ package com.example.a2023_2_proj_final_hush_hush_app.utils
 import android.icu.text.SimpleDateFormat
 import java.util.Locale
 
-class Utils {
+class Date {
     companion object {
         fun formatDate(
             date: String,
@@ -34,7 +34,7 @@ class Utils {
                 outPattern += " HH:mm"
             }
 
-            val formattedDate = Utils.formatDate(date, inPattern, outPattern)
+            val formattedDate = Date.formatDate(date, inPattern, outPattern)
 
             return if (useTime) {
                 val splitDate = formattedDate.split(" ")

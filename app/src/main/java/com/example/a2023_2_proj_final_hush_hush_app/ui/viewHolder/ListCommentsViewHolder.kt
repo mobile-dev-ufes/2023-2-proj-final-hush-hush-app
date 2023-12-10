@@ -5,12 +5,12 @@ import com.example.a2023_2_proj_final_hush_hush_app.R
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.CardCommentBinding
 import com.example.a2023_2_proj_final_hush_hush_app.interfaces.ViewHolderClickListener
 import com.example.a2023_2_proj_final_hush_hush_app.responses.comment.ShowResponse
-import com.example.a2023_2_proj_final_hush_hush_app.utils.Utils
+import com.example.a2023_2_proj_final_hush_hush_app.utils.Date
 
 class ListCommentsViewHolder(private val binding: CardCommentBinding, private val onClickListener: ViewHolderClickListener) : RecyclerView.ViewHolder(binding.root) {
     fun bindVH(comment: ShowResponse) {
         binding.username.text = comment.user.username
-        binding.createdAt.text = Utils.formatDateAccordingUserLocale(comment.createdAt)
+        binding.createdAt.text = Date.formatDateAccordingUserLocale(comment.createdAt)
         binding.comment.text = comment.content
         binding.likesCount.text = comment.likesCount.toString()
         binding.dislikesCount.text = comment.dislikesCount.toString()
