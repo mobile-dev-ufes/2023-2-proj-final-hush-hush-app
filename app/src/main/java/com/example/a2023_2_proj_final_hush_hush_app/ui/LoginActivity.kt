@@ -95,6 +95,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     sp.setProfilePicture(response.body()!!.profilePicture)
                     sp.setToken("${response.body()!!.token.tokenType} ${response.body()!!.token.accessToken}")
                     changeActivity(MenuActivity::class.java)
+                    finishAffinity()
 
                 }else{
                     showToast("Wrong username or password.")

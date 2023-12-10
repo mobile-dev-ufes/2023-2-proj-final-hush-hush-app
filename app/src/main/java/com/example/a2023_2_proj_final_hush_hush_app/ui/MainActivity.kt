@@ -4,31 +4,22 @@ import com.example.a2023_2_proj_final_hush_hush_app.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.LoginBody
-import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.ActivityMainBinding
-import com.example.a2023_2_proj_final_hush_hush_app.responses.user.StoreLoginResponse
-import com.example.a2023_2_proj_final_hush_hush_app.services.UserService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.a2023_2_proj_final_hush_hush_app.utils.Preferences
 
 class MainActivity : AppCompatActivity() ,  View.OnClickListener {
-    private var userService = RetrofitClient.createService(UserService::class.java)
-
     private lateinit var binding : ActivityMainBinding
-//    private lateinit var navController: NavController
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_test)
-//    }
-
-
+    private lateinit var sp: Preferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sp = Preferences(applicationContext)
+
+        if (sp.tokenIsFilled()) {
+            this.changeActivity(MenuActivity::class.java)
+            finish()
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.buttonRegister.setOnClickListener(this)
@@ -37,13 +28,15 @@ class MainActivity : AppCompatActivity() ,  View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.id == R.id.button_register) {
-            val intent = Intent(this, RegisterActivity::class.java )
-            startActivity(intent)
+            this.changeActivity(RegisterActivity::class.java)
 
         }else if(view.id == R.id.button_login){
-            val intent = Intent(this, LoginActivity::class.java )
-            startActivity(intent)
+            this.changeActivity(LoginActivity::class.java)
         }
+    }
 
+    private fun <S> changeActivity(sourceActivity: Class<S>) {
+        val intent = Intent(this, sourceActivity)
+        startActivity(intent)
     }
 }

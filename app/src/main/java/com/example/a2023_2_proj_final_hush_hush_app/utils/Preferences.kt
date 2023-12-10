@@ -34,4 +34,14 @@ class Preferences(context: Context) {
     fun getProfilePicture() : String {
         return sp.getString(this.profilePictureKey, "") ?: ""
     }
+
+    fun clearSharedPreferences() {
+        this.setToken("")
+        this.setUsername("")
+        this.setProfilePicture(null)
+    }
+
+    fun tokenIsFilled(): Boolean {
+        return this.getToken() != ""
+    }
 }

@@ -82,8 +82,10 @@ class TermsOfUseActivity : AppCompatActivity(), View.OnClickListener {
                     sp.setToken("${response.body()!!.token.tokenType} ${response.body()!!.token.accessToken}")
 
                     changeActivity(MenuActivity::class.java)
+                    finishAffinity()
                 } else {
                     showToast("Invalid username or password.")
+                    finish()
                 }
 
                 termsOfUseVM.setIsLoading(false)
@@ -94,13 +96,6 @@ class TermsOfUseActivity : AppCompatActivity(), View.OnClickListener {
                 showToast("Internal Server Error!")
             }
         })
-    //            }
-    //            else{
-    //                val text = "You have to accept the terms of use to prossegue!"
-    //                val duration = Toast.LENGTH_SHORT
-    //                val toast = Toast.makeText(applicationContext, text, duration)
-    //                toast.show()
-    //            }
     }
 
     private fun setObserver() {
