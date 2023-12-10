@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2023_2_proj_final_hush_hush_app.R
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentUserProfileBinding
+import com.example.a2023_2_proj_final_hush_hush_app.interfaces.CardViewHolderClickListener
 import com.example.a2023_2_proj_final_hush_hush_app.responses.post.IndexResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.user.ShowResponse
 import com.example.a2023_2_proj_final_hush_hush_app.services.PostService
@@ -27,7 +29,7 @@ import retrofit2.Response
 import java.util.Locale
 
 
-class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
+class UserProfileFragment : Fragment(R.layout.fragment_user_profile), CardViewHolderClickListener {
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var sp: Preferences
@@ -36,12 +38,8 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
     private var userService = RetrofitClient.createService(UserService::class.java)
     private var postService = RetrofitClient.createService(PostService::class.java)
 
-//    companion object {
-//        fun newInstance() = UserProfileFragment()
-//    }
-
     private lateinit var viewModel: UserProfileViewModel
-    private val adapter = ListHushHushAdapter()
+    private val adapter = ListHushHushAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -94,7 +92,6 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
 
     }
 
-
     fun showToast(message: String) {
         Toast.makeText(requireContext().applicationContext, message, Toast.LENGTH_LONG).show()
     }
@@ -123,6 +120,12 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                 showToast("Internal Server Error!")
             }
         })
+    }
+
+    override fun onClickCard(index: Int) {
+        val hushHush = adapter.getHushHushByIndex(index)
+        val action = UserProfileFragmentDirections.actionUserProfileFragmentToShowHushHushFragment(hushHush.id)
+        findNavController().navigate(action)
     }
 
     private fun setObserver() {

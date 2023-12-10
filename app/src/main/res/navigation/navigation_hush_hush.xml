@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_showHushHushFragment_to_userProfileFragment"
             app:destination="@id/userProfileFragment" />
+        <argument
+            android:name="post_id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"

@@ -9,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2023_2_proj_final_hush_hush_app.R
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentHomeBinding
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentUserProfileBinding
+import com.example.a2023_2_proj_final_hush_hush_app.interfaces.CardViewHolderClickListener
 import com.example.a2023_2_proj_final_hush_hush_app.responses.post.IndexResponse
 import com.example.a2023_2_proj_final_hush_hush_app.services.PostService
 import com.example.a2023_2_proj_final_hush_hush_app.ui.view.ListHushHushAdapter
@@ -26,7 +28,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.Locale
 
-class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
+class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener, CardViewHolderClickListener {
     private var _binding: FragmentHomeBinding? = null
     private lateinit var homeVM: HomeViewModel
     private lateinit var sp: Preferences
@@ -34,7 +36,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
     private val binding get() = _binding!!
     private var postService = RetrofitClient.createService(PostService::class.java)
 
-    private val adapter = ListHushHushAdapter()
+    private val adapter = ListHushHushAdapter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -60,6 +62,12 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
         this.setObserver()
         this.getListHushHush()
         return binding.root
+    }
+
+    override fun onClickCard(index: Int) {
+        val hushHush = adapter.getHushHushByIndex(index)
+        val action = HomeFragmentDirections.actionHomeFragmentToShowHushHushFragment(hushHush.id)
+        findNavController().navigate(action)
     }
 
     override fun onClick(view: View) {

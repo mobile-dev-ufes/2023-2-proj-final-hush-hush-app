@@ -10,18 +10,16 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2023_2_proj_final_hush_hush_app.R
 import com.example.a2023_2_proj_final_hush_hush_app.bodies.comment.StoreUpdateBody
-import com.example.a2023_2_proj_final_hush_hush_app.bodies.user.LoginBody
 import com.example.a2023_2_proj_final_hush_hush_app.clients.RetrofitClient
 import com.example.a2023_2_proj_final_hush_hush_app.databinding.FragmentShowHushHushBinding
 import com.example.a2023_2_proj_final_hush_hush_app.interfaces.ViewHolderClickListener
 import com.example.a2023_2_proj_final_hush_hush_app.responses.comment.IndexResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.comment.ShowResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.comment.StoreUpdateResponse
-import com.example.a2023_2_proj_final_hush_hush_app.responses.user.StoreLoginResponse
 import com.example.a2023_2_proj_final_hush_hush_app.responses.post.ShowResponse as PostShowResponse
 import com.example.a2023_2_proj_final_hush_hush_app.services.CommentService
 import com.example.a2023_2_proj_final_hush_hush_app.services.EvaluationService
@@ -41,21 +39,19 @@ class ShowHushHushFragment : Fragment(R.layout.fragment_show_hush_hush), ViewHol
     private lateinit var sp: Preferences
     private lateinit var adapter: ListCommentsAdapter
     private val binding get() = _binding!!
+
     private var commentService = RetrofitClient.createService(CommentService::class.java)
     private var evaluationService = RetrofitClient.createService(EvaluationService::class.java)
     private var postService = RetrofitClient.createService(PostService::class.java)
-    private val postId = 10
-//    companion object {
-//        fun newInstance(comments: IndexResponse): ShowHushHushFragment {
-//            val fragment = ShowHushHushFragment()
-//            val args = Bundle()
-//            args.getSerializable()
-//        }
-//    }
+
+    private var postId: Int = 0;
+    private val args: ShowHushHushFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
         sp = Preferences(requireContext().applicationContext)
+        postId = args.postId
+
         showHushHushVM = ViewModelProvider(this)[ShowHushHushViewModel::class.java]
 
         _binding = FragmentShowHushHushBinding.inflate(inflater, container, false)
