@@ -31,5 +31,7 @@
     <string name="recent_confessions">Confissões Recentes</string>
     <string name="comments">Comentários</string>
     <string name="type_comment">Digite o seu comentário</string>
-
+    <string name="logout_message">Você tem certeza que deseja sair?</string>
+    <string name="logout">Logout</string>
+    <string name="cancel">Cancelar</string>
 </resources>

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_createHushHushFragment_to_userProfileFragment"
             app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_createHushHushFragment_to_logoutFragment"
+            app:destination="@id/logoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -34,6 +37,9 @@
         <action
             android:id="@+id/action_homeFragment_to_showHushHushFragment"
             app:destination="@id/showHushHushFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_logoutFragment"
+            app:destination="@id/logoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/showHushHushFragment"
@@ -52,6 +58,9 @@
         <argument
             android:name="post_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_showHushHushFragment_to_logoutFragment"
+            app:destination="@id/logoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
@@ -67,5 +76,13 @@
         <action
             android:id="@+id/action_userProfileFragment_to_createHushHushFragment"
             app:destination="@id/createHushHushFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_logoutFragment"
+            app:destination="@id/logoutFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/logoutFragment"
+        android:name="com.example.a2023_2_proj_final_hush_hush_app.ui.LogoutFragment"
+        android:label="fragment_logout"
+        tools:layout="@layout/fragment_logout" />
 </navigation>

@@ -44,39 +44,9 @@ class MenuActivity() : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
     }
 
-    private fun handleClickLogout() {
-        this.logout()
-    }
-
-    private fun logout() {
-//        loginVM.setIsLoading(true)
-        val currentLocale: Locale = resources.configuration.locales[0]
-        val language: String = currentLocale.language
-        val token = sp.getToken()
-
-        val call = userService.logout(token, language)
-
-        call.enqueue(object: Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>,) {
-                if(response.isSuccessful) {
-                    sp.clearSharedPreferences()
-                    changeActivity(MainActivity::class.java)
-                    showToast("Logout successful!")
-                    finish()
-
-                }else{
-                    showToast("Error on logout.")
-                }
-
-//                loginVM.setIsLoading(false)
-            }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-//                loginVM.setIsLoading(false)
-                showToast("Internal Server Error!")
-            }
-        })
-    }
+//    private fun handleClickLogout() {
+//        this.logout()
+//    }
 
     fun <S> changeActivity(sourceActivity: Class<S>) {
         val intent = Intent(this, sourceActivity)
