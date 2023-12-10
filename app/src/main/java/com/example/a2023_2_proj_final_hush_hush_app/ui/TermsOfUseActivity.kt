@@ -81,6 +81,7 @@ class TermsOfUseActivity : AppCompatActivity(), View.OnClickListener {
                     sp.setProfilePicture(response.body()!!.profilePicture)
                     sp.setToken("${response.body()!!.token.tokenType} ${response.body()!!.token.accessToken}")
 
+                    showToast("Welcome to Hush-Hush!")
                     changeActivity(MenuActivity::class.java)
                     finishAffinity()
                 } else {

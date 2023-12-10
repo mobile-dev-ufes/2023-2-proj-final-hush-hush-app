@@ -4,36 +4,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/title_terms_of_use"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gloriahallelujahregular"
         android:text="@string/title_terms_of_use"
         android:textColor="@color/white"
-        android:textSize="40sp"
+        android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
-        android:paddingBottom="40dp"
-
-        />
+        app:layout_constraintBottom_toTopOf="@+id/scroll_view"
+        android:gravity="center"/>
 
 
     <ScrollView
         android:id="@+id/scroll_view"
-        android:layout_marginTop="120dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/checkbox"
-        app:layout_constraintTop_toBottomOf="@id/title_terms_of_use"
-        >
+        app:layout_constraintTop_toBottomOf="@id/title_terms_of_use">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,12 +86,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/change_terms_body"
-                android:layout_marginBottom="17dp"
+                android:layout_marginBottom="16dp"
                 android:textColor="@color/gray"/>
-
         </LinearLayout>
     </ScrollView>
-
 
     <CheckBox
         android:id="@+id/checkbox"
@@ -103,27 +98,22 @@
         android:text="@string/agreed_to_terms"
         android:textColor="@color/gray"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_signUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingEnd="20dp"
-        app:layout_constraintVertical_bias="0.73" />
+        app:layout_constraintTop_toBottomOf="@id/scroll_view" />
 
     <Button
         android:id="@+id/button_signUp"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="@string/sign_up"
-        android:enabled="false"
+        android:enabled="true"
+        android:background="@drawable/button_border_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkbox"
-        app:layout_constraintVertical_bias="0.651" />
-
-
+        app:layout_constraintTop_toBottomOf="@id/checkbox" />
 </androidx.constraintlayout.widget.ConstraintLayout>
