@@ -1,53 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_hush_hush"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="4dp"
-    android:backgroundTint="@color/black">
+    android:background="@color/black"
+    android:padding="10dp">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/hush_hush_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gloriahallelujahregular"
+        android:text="@string/hush_hush"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/search_block"/>
 
-        <TextView
-            android:id="@+id/hush_hush_title"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/search_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10"
+        app:layout_constraintTop_toBottomOf="@id/hush_hush_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <EditText
+            android:id="@+id/search_hush_hush"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/gloriahallelujahregular"
-            android:text="@string/hush_hush"
-            android:textSize="50dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textAlignment="center" />
+            android:layout_weight="8.5"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:padding="10dp"
+            android:background="@drawable/border_radious"
+            android:hint="@string/search_hush_hush"
+            android:inputType="text"
+            android:minHeight="50dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:weightSum="5">
-
-            <EditText
-                android:id="@+id/search_hush_hush"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="90dp"
-                android:background="@drawable/border_radious"
-                android:hint="@string/search_hush_hush"
-                android:inputType="text"
-                android:minHeight="40dp" />
-
-            <Button
-                android:id="@+id/search_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="90dp"
-                android:layout_marginEnd="20dp" />
-        </LinearLayout>
-    </RelativeLayout>
-
-
-</androidx.cardview.widget.CardView>
+            android:layout_weight="1.5"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:minHeight="50dp"
+            android:src="@drawable/magnifier_icon"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/purple"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
