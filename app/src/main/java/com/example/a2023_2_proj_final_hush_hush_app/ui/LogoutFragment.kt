@@ -30,12 +30,13 @@ class LogoutFragment : DialogFragment() {
     private lateinit var sp: Preferences
     private var userService = RetrofitClient.createService(UserService::class.java)
 
-    private lateinit var viewModel: LogoutViewModel
+    private lateinit var logoutVM: LogoutViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         sp = Preferences(requireContext().applicationContext)
         _binding = FragmentLogoutBinding.inflate(inflater, container, false)
+        logoutVM = ViewModelProvider(this)[LogoutViewModel::class.java]
 
         binding.logoutButton.setOnClickListener {
             this.logout()
@@ -45,22 +46,12 @@ class LogoutFragment : DialogFragment() {
             findNavController().popBackStack()
         }
 
+        this.setObserver()
         return binding.root
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return super.onCreateDialog(savedInstanceState)
-
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LogoutViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
     private fun logout() {
-//        loginVM.setIsLoading(true)
+        logoutVM.setIsLoading(true)
         val currentLocale: Locale = resources.configuration.locales[0]
         val language: String = currentLocale.language
         val token = sp.getToken()
@@ -78,11 +69,11 @@ class LogoutFragment : DialogFragment() {
                     showToast("Error on logout.")
                 }
 
-//                loginVM.setIsLoading(false)
+                logoutVM.setIsLoading(false)
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-//                loginVM.setIsLoading(false)
+                logoutVM.setIsLoading(false)
                 showToast("Internal Server Error!")
             }
         })
@@ -95,5 +86,11 @@ class LogoutFragment : DialogFragment() {
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext().applicationContext, message, Toast.LENGTH_LONG).show()
+    }
+
+    private fun setObserver() {
+        logoutVM.isLoading().observe(this) {
+            binding.logoutButton.isEnabled = !it
+        }
     }
 }
