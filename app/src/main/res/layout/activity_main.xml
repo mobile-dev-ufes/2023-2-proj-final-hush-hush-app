@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_welcome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/buttons"
-        android:src="@drawable/anonymous_icon"
+        android:src="@drawable/anonymous_icon_2"
         app:tint="@color/white" />
 
 
