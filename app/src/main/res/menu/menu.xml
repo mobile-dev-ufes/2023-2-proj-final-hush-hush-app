@@ -2,7 +2,7 @@
     <item
         android:id="@id/homeFragment"
         android:title=""
-        android:icon="@drawable/hamburguer_icon"/>
+        android:icon="@drawable/home_icon"/>
     <item
         android:id="@id/createHushHushFragment"
         android:title=""
@@ -10,7 +10,7 @@
     <item
         android:id="@+id/userProfileFragment"
         android:title=""
-        android:icon="@drawable/settings_icon"/>
+        android:icon="@drawable/profile_icon"/>
 
     <item
         android:id="@id/logoutFragment"
