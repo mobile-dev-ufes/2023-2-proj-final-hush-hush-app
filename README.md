@@ -17,34 +17,34 @@ https://www.canva.com/design/DAFyOQZp9vM/BDS0TVZ6yRE98M57J0cv6A/edit?utm_content
 
 ##  🚀 Features:
 
-### <i class="fas fa-mobile-alt" ></i>   Register:
+### 📱  Register:
 
 To register in app, you just need to create a username and password in register page and agree to terms of use in terms of use page.
 
-### <i class="fas fa-mobile-alt" ></i>  Login:
+### 📱  Login:
 
 To login in app, you just have to insert your username and password in login page.
 
-### <i class="fas fa-mobile-alt" ></i>  Logout:
+### 📱  Logout:
 
 To logout of app, you just have to click in logout button in the bottom of app and confirm that your are sure that you want to logout.
 
-### <i class="fas fa-mobile-alt" ></i>  Create a hush-hush post:
+### 📱  Create a hush-hush post:
 
 To create a hush-hush, you just have to click in "plus icon" in menu and then you'll be redirect to another page when you can write your post and submit in submit button.
 
-### <i class="fas fa-mobile-alt" ></i>  Comment in another person hush-hush:
+### 📱  Comment in another person hush-hush:
 To comment in another person hush-hush post, you just have to go to the bottom  of hush-hush page, make your comment in input text area and click in icon of send in the right side of input.
 
-### <i class="fas fa-mobile-alt" ></i>  Likes/dislikes in other people's Hush-Hush posts:
+### 📱  Likes/dislikes in other people's Hush-Hush posts:
 To like/dislike a hush-hush post, you just have to click in "like icon" or "dislike icon" in hush-hush post.
 
-### <i class="fas fa-mobile-alt" ></i>  Filter hush-hush posts in home by title:
+### 📱  Filter hush-hush posts in home by title:
 To filter Hush-Hush posts, you just have to go to the home page.
 Path: "Login --> Home Page"
 Select the search input at the top of the page and enter part of the title or the entire title of the Hush-Hush you want to read about.
 
-### <i class="fas fa-mobile-alt" ></i> See it own profile:
+### 📱 See it own profile:
 To see your own profile, you just have to click in "profile icon" in menu at the bottom of any page when you're logged.
 
 ## 🚀 Technologies:
@@ -59,7 +59,7 @@ To run the app, it's necessary to run the API, follows the docs at : https://git
 
 Then, clone the current repository in your local machine and opppend it android studio. Navigate to class Retrofit Client and change the ip to your ip in line 11:
 
-![Alt text](image.png)
+![img_2.png](img_2.png)
 
 To capture your ip, use command:
 
@@ -69,6 +69,6 @@ $ ifconfig
 
 Finally, just run the app as usual in android studio.
 
-## <i class="fab fa-youtube"></i> Video:
+## 📹 Video:
 To see the video : link
 
