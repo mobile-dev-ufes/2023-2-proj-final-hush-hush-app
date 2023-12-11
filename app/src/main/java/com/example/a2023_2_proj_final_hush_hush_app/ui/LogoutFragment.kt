@@ -63,6 +63,7 @@ class LogoutFragment : DialogFragment() {
                 if(response.isSuccessful) {
                     sp.clearSharedPreferences()
                     changeActivity(MainActivity::class.java)
+                    activity?.finishAffinity()
                     showToast("Logout successful!")
 
                 }else{
