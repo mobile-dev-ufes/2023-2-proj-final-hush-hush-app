@@ -48,16 +48,16 @@ Select the search input at the top of the page and enter part of the title or th
 To see your own profile, you just have to click in "profile icon" in menu at the bottom of any page when you're logged.
 
 ## 🚀 Technologies:
-* PHP, using Laravrel in API. To see more about, accesss:
+* PHP, using Laravel Framework to develop the API. To see more about, access:
   https://github.com/mobile-dev-ufes/2023-2-proj-final-hush-hush-api
 
 * Kotlin in android app.
 
 
 ## 💻 Instalation:
-To run the app, it's necessary to run the API, follows the docs at : https://github.com/mobile-dev-ufes/2023-2-proj-final-hush-hush-api
+To run the app, it's necessary to run the API, follows the docs at: https://github.com/mobile-dev-ufes/2023-2-proj-final-hush-hush-api
 
-Then, clone the current repository in your local machine and opppend it in android studio. Navigate to class Retrofit Client and change the ip to your ip in line 11:
+Then, clone the current repository in your local machine and open it in android studio. Navigate to class RetrofitClient and change the ip to your ip in line 11:
 
 ![img_2.png](img_2.png)
 
