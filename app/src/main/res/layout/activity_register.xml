@@ -61,7 +61,7 @@
         <EditText
             android:id="@+id/editTextUsername"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:hint="@string/enter_username"
@@ -75,7 +75,7 @@
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:hint="@string/enter_pass"
@@ -89,7 +89,7 @@
         <EditText
             android:id="@+id/editTextConfirmPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:hint="@string/confirm_pass"
@@ -103,9 +103,9 @@
         <Button
             android:id="@+id/button_next"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="@string/next"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:minHeight="40dp"
             android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
@@ -135,9 +135,9 @@
         <Button
             android:id="@+id/button_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:backgroundTint="@color/black"
             android:text="@string/login"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

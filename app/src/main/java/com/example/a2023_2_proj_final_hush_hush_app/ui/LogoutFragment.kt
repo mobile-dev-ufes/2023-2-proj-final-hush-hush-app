@@ -67,6 +67,7 @@ class LogoutFragment : DialogFragment() {
                     showToast("Logout successful!")
 
                 }else{
+//                    sp.clearSharedPreferences()
                     showToast("Error on logout.")
                 }
 
