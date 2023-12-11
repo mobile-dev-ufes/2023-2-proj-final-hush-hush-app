@@ -9,7 +9,7 @@
 ##  🔎  About the app:
 
 The Hush-Hush app is designed for individuals dealing with unresolved emotional, financial, and personal dilemmas. The goal is to provide a safe and welcoming space where these individuals can anonymously share and open up about their issues. This allows users who are interested in others' challenges to comment and engage in discussions on each of the topics, fostering a supportive community environment.
-Our app is aimed at people between 20 and 50 years old, although individuals of all ages can access it..
+Our app is aimed at people between 20 and 50 years old, although individuals of all ages can access it.
 
 You can see app prototype in :
 https://www.canva.com/design/DAFyOQZp9vM/BDS0TVZ6yRE98M57J0cv6A/edit?utm_content=DAFyOQZp9vM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
@@ -23,7 +23,7 @@ To register in app, you just need to create a username and password in register 
 
 ### 📱  Login:
 
-To login in app, you just have to insert your username and password in login page.
+To login in app, you just have to enter your username and password on the login page and submit the form by clicking the login button
 
 ### 📱  Logout:
 
@@ -57,7 +57,7 @@ To see your own profile, you just have to click in "profile icon" in menu at the
 ## 💻 Instalation:
 To run the app, it's necessary to run the API, follows the docs at : https://github.com/mobile-dev-ufes/2023-2-proj-final-hush-hush-api
 
-Then, clone the current repository in your local machine and opppend it android studio. Navigate to class Retrofit Client and change the ip to your ip in line 11:
+Then, clone the current repository in your local machine and opppend it in android studio. Navigate to class Retrofit Client and change the ip to your ip in line 11:
 
 ![img_2.png](img_2.png)
 
