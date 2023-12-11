@@ -43,7 +43,7 @@
             android:background="@drawable/border_radious"
             android:hint="@string/search_hush_hush"
             android:inputType="text"
-            android:minHeight="50dp" />
+            android:minHeight="40dp" />
 
         <ImageButton
             android:id="@+id/search_button"
@@ -52,7 +52,7 @@
             android:layout_weight="1.5"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
-            android:minHeight="50dp"
+            android:minHeight="40dp"
             android:src="@drawable/magnifier_icon"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
