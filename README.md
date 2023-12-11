@@ -70,5 +70,4 @@ $ ifconfig
 Finally, just run the app as usual in android studio.
 
 ## 📹 Video:
-To see the video : link
-
+To see the app presentation video on Youtube: <a href="https://youtu.be/XA4-tjm_yyM">https://youtu.be/XA4-tjm_yyM</a>
